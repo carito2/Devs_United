@@ -23,4 +23,8 @@ function SignUpPage() {
     )
 }
 
+<<<<<<< HEAD
 export default SignUpPage;
+=======
+export default WelcomePage;
+>>>>>>> 236dbd1 (Se crea rama signUpPage para crear layout y todo lo relacionado con pagina de registro y bienvenida)
