@@ -11,8 +11,7 @@ function BoxColors() {
                         className="containerColor"
                         style={{backgroundColor: color.hex}}
                     />
-                )
-                
+                );
             })}
         </div>
     );
