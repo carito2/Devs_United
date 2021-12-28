@@ -2,6 +2,7 @@ import React from "react";
 import profilePicture from "../resources/images/profilePicture.svg";
 import logo from "../resources/images/logoSmallDevs.svg";
 import devsUnited from "../resources/images/devsUnited.svg";
+import TweetContainer from "../components/TweetContainer";
 
 function FeedPage() {
     return (
@@ -23,7 +24,7 @@ function FeedPage() {
                 </div>
             </form>
             <article>
-
+                <TweetContainer />
             </article>
         </section>
     )

@@ -209,6 +209,7 @@ form.formBox textarea.inputTweet{
 
 form.formBox textarea.inputTweet::placeholder{
   color: #914D8B;
+  font-size: 20px;
 }
 
 form.formBox button.postButton{
