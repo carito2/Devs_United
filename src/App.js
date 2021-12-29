@@ -1,10 +1,10 @@
-import UserProfile from './pages/UserProfile';
+import UserProfileB from './pages/UserProfileB';
 import './styles/App.css';
 
 function App() {
   return (
     <div className="App">
-      <UserProfile />
+      <UserProfileB />
     </div>
   );
 }
