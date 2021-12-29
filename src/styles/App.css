@@ -16,7 +16,6 @@
 
 .App {
   background-color: #2E132C;
-  height: 100vh;
   width: 100vw;
 }
 
@@ -156,10 +155,9 @@ section.feedPage{
 section.feedPage header.headerFeedPage {
   align-items: center;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  margin: 0px 30%;
-  padding: 9px 18px;
+  padding: 0px 30%;
+  margin: 9px 0px;
   width: 100%;
 }
 
@@ -177,7 +175,7 @@ header.headerFeedPage img.logoSmall{
 
 header.headerFeedPage img.titleDevsUnited{
   height: 15px;
-  width: 159px;
+  width: 26%;
 }
 
 section.feedPage form.formBox{
@@ -188,7 +186,7 @@ section.feedPage form.formBox{
   width: 100%;
 }
 
-form.formBox img.profilePicture{
+img.profilePicture{
   border-radius: 50px;
   height: 56px;
   width: 56px;
@@ -237,3 +235,61 @@ p.maxCharacters{
   color: #F50D5A;
 }
 
+/* Tweet Container */
+div.tweetContainer {
+  border-bottom: 2px solid #60265B;
+  display: flex;
+  margin: 28px 30%;
+  overflow-y: scroll;
+  padding: 0 17px;
+}
+
+div.tweetContainer div.tweetBox {
+  padding-left: 17px;
+}
+
+div.tweetBox div.headerBox{
+  display: flex;
+  margin-bottom: 17px;
+}
+
+div.headerBox h1.usernameTitle{
+  background-color: #FFEA5C;
+  border-bottom-left-radius: 10px;
+  color: #2E132C;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+div.headerBox p.tweetDate{
+  font-family: "Fira Code", monospace;
+  font-size: 20px;
+  line-height: 20px;
+  margin-left: 12px;
+}
+
+div.tweetBox p.tweetContent{
+  font-family: "Fira Code", monospace;
+  font-size: 18px;
+  letter-spacing: -0.333333px;
+  line-height: 23.62px;
+  margin-bottom: 25px;
+}
+
+div.tweetBox div.likeBox{
+  display: flex;
+  margin-bottom: 26px;
+}
+
+div.likeBox img.logoLike{
+  cursor: pointer;
+  height: 20px;
+  margin-right: 12px;
+  width: 24px;
+}
+
+div.likeBox p.numberOfLikes{
+  color: #F50D5A;
+  font-size: 16px;
+  line-height: 21px;
+}

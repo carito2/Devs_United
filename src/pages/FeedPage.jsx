@@ -25,6 +25,8 @@ function FeedPage() {
             </form>
             <article>
                 <TweetContainer />
+                <TweetContainer />
+                <TweetContainer />
             </article>
         </section>
     )
