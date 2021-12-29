@@ -1,0 +1,295 @@
+/* Estilos generales */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+@font-face {
+  font-family: Silkscreen;
+  src: url("../resources/fonts/slkscrb.ttf");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #FFFFFF;
+  font-size: 24px;
+}
+
+.App {
+  background-color: #2E132C;
+  width: 100vw;
+}
+
+h1 {
+  font-family: Silkscreen;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 50px;
+  letter-spacing: -0.333333px;
+
+}
+
+p {
+  font-family: "Fira Code", monospace;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 31px;
+  letter-spacing: -0.333333px;
+}
+
+/* SignUpPage */
+
+section.welcomePage {
+  display: flex;
+  height: 100%;
+}
+
+.welcomePage .logoContainer {
+  display: flex;
+  padding: 0 13%;
+  width: 50%;
+}
+
+.welcomePage .logoContainer .logoWelcome{
+  width: 100%;
+}
+
+section.welcomePage article.containerSignIn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 10%;
+  width: 50%;
+}
+
+section.welcomePage article.containerSignIn .paragraphWelcome{
+  margin: 38px 0px;
+}
+
+section.welcomePage article.containerSignIn .boxLogin{
+  align-items: center;
+  background-color: #4285F4;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  font-family: "Roboto", monospace;
+  font-weight: 500;
+  height: 58px;
+  justify-content: space-between;
+  line-height: 28px;
+  margin-bottom: 165px;
+  padding: 0 20px 0 0;
+}
+
+section.welcomePage article.containerSignIn .boxLogin .logoGoogle{
+  background-color: #FFFFFF;
+  border: 2px solid #4285F4;
+  box-sizing: border-box;
+  border-radius: 5px 0px 0px 5px;
+  height: 100%;
+}
+
+section.welcomePage article.containerSignIn .footerWelcomePage {
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.333333px; 
+}
+
+p.paragraphFooter{
+  color: #60265B;
+  text-align: center;
+}
+
+span.beta {
+  color: #F50D5A;
+}
+
+/* Welcome Page */
+
+span.betaName {
+  color: #F50D5A;
+  font-size: 50px;
+}
+
+section.welcomePage .containerSignIn input.inputUsername{
+  border: none;
+  background-color: #150714;
+  margin: 30px 0;
+  padding: 19px;
+  width: 100%;
+}
+
+input.inputUsername::placeholder{
+  color:#914D8B;
+  font-family: "Fira Code", monospace;
+}
+
+.welcomePage .containerSignIn .boxColors{
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 50px 0;
+}
+
+.containerColor{
+  height: 58px;
+  width: 58px;
+}
+
+button.buttonWelcome {
+  background-color: #00DA76;
+  border: none;
+  font-family: Silkscreen;
+  margin-bottom: 86px;
+  padding: 22px 0;
+  text-align: center;
+}
+
+/*Feed Page*/
+section.feedPage{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+section.feedPage header.headerFeedPage {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 30%;
+  margin: 9px 0px;
+  width: 100%;
+}
+
+header.headerFeedPage img.profilePicture{
+  border: 2px solid #FFEA5C;
+  border-radius: 50px;
+  height: 33px;
+  width: 33px;
+}
+
+header.headerFeedPage img.logoSmall{
+  height: 27px;
+  width: 45px;
+}
+
+header.headerFeedPage img.titleDevsUnited{
+  height: 15px;
+  width: 26%;
+}
+
+section.feedPage form.formBox{
+  background-color: #150714;
+  border-bottom: 2px solid #60265B;
+  display: flex;
+  padding: 20px 30%;
+  width: 100%;
+}
+
+img.profilePicture{
+  border-radius: 50px;
+  height: 56px;
+  width: 56px;
+}
+
+form.formBox div.inputContainer{
+  display: flex;
+  flex-direction: column;
+  margin: 0px 17px;
+}
+
+form.formBox textarea.inputTweet{
+  background-color: #2F112D;
+  border: none;
+  height: 113px;
+  width: 500px;
+}
+
+form.formBox textarea.inputTweet::placeholder{
+  color: #914D8B;
+  font-size: 20px;
+}
+
+form.formBox button.postButton{
+  background-color: #2F112D;
+  border: none;
+  color: #150714;
+  cursor: pointer;
+  font-family: Silkscreen;
+  font-weight: 700;
+  font-size: 20px;
+  height: 35px;
+  width: 102px;
+}
+
+form.formBox div.countingBoxCharacters{
+  display: flex;
+  justify-content: space-between;
+}
+
+p.characters{
+  font-size: 16px;
+}
+
+p.maxCharacters{
+  color: #F50D5A;
+}
+
+/* Tweet Container */
+div.tweetContainer {
+  border-bottom: 2px solid #60265B;
+  display: flex;
+  margin: 28px 30%;
+  overflow-y: scroll;
+  padding: 0 17px;
+}
+
+div.tweetContainer div.tweetBox {
+  padding-left: 17px;
+}
+
+div.tweetBox div.headerBox{
+  display: flex;
+  margin-bottom: 17px;
+}
+
+div.headerBox h1.usernameTitle{
+  background-color: #FFEA5C;
+  border-bottom-left-radius: 10px;
+  color: #2E132C;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+div.headerBox p.tweetDate{
+  font-family: "Fira Code", monospace;
+  font-size: 20px;
+  line-height: 20px;
+  margin-left: 12px;
+}
+
+div.tweetBox p.tweetContent{
+  font-family: "Fira Code", monospace;
+  font-size: 18px;
+  letter-spacing: -0.333333px;
+  line-height: 23.62px;
+  margin-bottom: 25px;
+}
+
+div.tweetBox div.likeBox{
+  display: flex;
+  margin-bottom: 26px;
+}
+
+div.likeBox img.logoLike{
+  cursor: pointer;
+  height: 20px;
+  margin-right: 12px;
+  width: 24px;
+}
+
+div.likeBox p.numberOfLikes{
+  color: #F50D5A;
+  font-size: 16px;
+  line-height: 21px;
+}
