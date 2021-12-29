@@ -1,10 +1,10 @@
-import FeedPage from './pages/FeedPage';
+import UserProfile from './pages/UserProfile';
 import './styles/App.css';
 
 function App() {
   return (
     <div className="App">
-      <FeedPage />
+      <UserProfile />
     </div>
   );
 }
