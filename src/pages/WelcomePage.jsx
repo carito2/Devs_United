@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../resources/images/logoDevsUnited.svg";
-import logoGoogle from "../resources/images/logoGoogle.svg";
+import BoxColors from "../components/BoxColors"
 
 function WelcomePage() {
     return (
@@ -9,12 +9,11 @@ function WelcomePage() {
                 <img className="logoWelcome" src={logo} alt="Logo Devs_United" />
             </header>
             <article className="containerSignIn">
-                <h1>LOREM IPSUM DOLOR</h1>
-                <p className="paragraphWelcome">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                <button className="boxLogin">
-                    <img className="logoGoogle" src={logoGoogle} alt="Logo de Google" />
-                    <span className="buttonSignIn">Sign in with Google</span>
-                </button>
+                <h1>Welcome <span className="betaName">Name!</span></h1>
+                <input className="inputUsername" type="text" placeholder="Type your username" />
+                <p>Select your favorite color</p>
+                <BoxColors />
+                <button className="buttonWelcome">Continue</button>
                 <footer className="footerWelcomePage">
                     <p className="paragraphFooter">© 2020 Devs_United - <span className="beta">BETA</span></p>
                 </footer>
