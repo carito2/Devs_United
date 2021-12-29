@@ -240,7 +240,6 @@ div.tweetContainer {
   border-bottom: 2px solid #60265B;
   display: flex;
   margin: 28px 30%;
-  overflow-y: scroll;
   padding: 0 17px;
 }
 
@@ -292,4 +291,107 @@ div.likeBox p.numberOfLikes{
   color: #F50D5A;
   font-size: 16px;
   line-height: 21px;
+}
+
+/* User Profile */
+
+section.userProfile{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+section.userProfile header.headerUserProfile{
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 30%;
+  padding: 8px 16px;
+}
+
+header.headerUserProfile div.returnBox{
+  display: flex;
+}
+
+div.returnBox img.buttonBack{
+  background-color: #250C23;
+  border: none;
+  cursor: pointer;
+  height: 16px;
+  width: 28px;
+}
+
+div.returnBox h1.username{
+  font-size: 20px;
+  line-height: 20px;
+  margin-left: 22px;
+}
+
+header.headerUserProfile button.buttonLogout{
+  background-color: #F50D5A;
+  border: none;
+  color:  #250C23;
+  cursor: pointer;
+  font-family: Silkscreen;
+  font-weight: 700;
+  font-size: 16px;
+  height: 35px;
+  line-height: 16px;
+  padding: 9px 6px;
+  text-align: center;
+}
+
+img.logoLogout{
+  height: 16px;
+  width: 22px;
+}
+
+section.userProfile article.userInformation {
+  align-items: center;
+  background-color: #150714;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 30%;
+}
+
+article.userInformation img.profilePicture{
+  border: 5px solid #FFEA5C;
+  border-radius: 100px;
+  height: 134px;
+  margin: 22px 0px;
+  width: 134px;
+}
+
+article.userInformation h1.username{
+  background-color: #FFEA5C;
+  border-bottom-left-radius: 10px;
+  color: #150714;
+  font-size: 30px;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+
+article.userInformation div.profileTabs{
+  display: flex;
+  width: 100%;
+}
+
+div.profileTabs button.tab{
+  background-color: #150714;
+  border: none;
+  color: #60265B;
+  cursor: pointer;
+  font-family: Silkscreen;
+  font-size: 24px;
+  line-height: 24px;
+  padding: 11px 0px;
+  transition: 0.3s;
+  width: 50%;
+}
+
+div.profileTabs button.tab:hover, div.profileTabs button.tab:active{
+  background-color: #60265B;
+  color: #150714;
 }
