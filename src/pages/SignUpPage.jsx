@@ -1,4 +1,5 @@
 import React from "react";
+import { loginWithGoogle } from "../firebase/firebase";
 import logo from "../resources/images/logoDevsUnited.svg";
 import logoGoogle from "../resources/images/logoGoogle.svg";
 
@@ -11,7 +12,7 @@ function SignUpPage() {
             <article className="containerSignIn">
                 <h1>LOREM IPSUM DOLOR</h1>
                 <p className="paragraphWelcome">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                <button className="boxLogin">
+                <button className="boxLogin" onClick={loginWithGoogle}>
                     <img className="logoGoogle" src={logoGoogle} alt="Logo de Google" />
                     <span className="buttonSignIn">Sign in with Google</span>
                 </button>

@@ -1,7 +1,8 @@
 import React, {useContext, useEffect} from "react";
 import {AppContext} from "./contexts/AppContext";
 import {firestore, loginWithGoogle, auth, logout} from "./firebase/firebase"
-import UserProfile from './pages/UserProfileB';
+import SignUpPage from './pages/SignUpPage';
+import WelcomePage from './pages/WelcomePage';
 import './styles/App.css';
 
 function App() {
@@ -40,7 +41,11 @@ function App() {
 
   return (
     <div className="App">
-      <UserProfile />
+      {user ? (
+        <WelcomePage />
+      ) : (
+        <SignUpPage />
+      )}
     </div>
   );
 }
