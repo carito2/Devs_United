@@ -1,6 +1,7 @@
 import React, {useContext, useEffect} from "react";
 import {AppContext} from "./contexts/AppContext";
 import {firestore, loginWithGoogle, auth, logout} from "./firebase/firebase"
+import FeedPage from './pages/FeedPage';
 import SignUpPage from './pages/SignUpPage';
 import WelcomePage from './pages/WelcomePage';
 import './styles/App.css';
@@ -10,9 +11,11 @@ function App() {
     tweet,
     tweets,
     user,
+    usersProfiles,
     setTweet,
     setTweets,
-    setUser
+    setUser,
+    setUsersProfiles
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -39,10 +42,30 @@ function App() {
     return () => unsubscribe();
   },[])
 
+  useEffect(() => {
+    const unsubscribe = firestore
+      .collection("usersProfile")
+      .onSnapshot((snapshot) => {
+        const users = snapshot.docs.map((doc) => {
+          console.log(doc.data());
+          return {
+            email: doc.data().email,
+            profilePicture: doc.data().profilePicture,
+            userColor: doc.data().userColor,
+            userName: doc.data().userName,
+            uid: doc.data().uid,
+          }
+        })
+        setUsersProfiles(users);
+      });
+    return () => unsubscribe();
+  },[])
+
+
+
   return (
     <div className="App">
-      {user ? (
-        <WelcomePage />
+      {user ? (user.username ? (<FeedPage />) : (<WelcomePage />)
       ) : (
         <SignUpPage />
       )}
