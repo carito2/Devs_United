@@ -133,8 +133,18 @@ input.inputUsername::placeholder{
 }
 
 .containerColor{
+  color: transparent;
+  cursor: pointer;
   height: 58px;
   width: 58px;
+}
+
+.containerColor:active{
+  border: 2px solid #FFFFFF;
+}
+
+.containerColor::selection{
+  border: 2px solid #FFFFFF;
 }
 
 button.buttonWelcome {

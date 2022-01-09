@@ -1,7 +1,7 @@
 import React from "react";
 import colors from "../contexts/colors"
 
-function BoxColors() {
+function BoxColors({handleChange}) {
     return(
         <div className="boxColors">
             {colors.map((color) => {
@@ -9,8 +9,12 @@ function BoxColors() {
                     <div
                         key={color.name}
                         className="containerColor"
+                        name="userColor"
                         style={{backgroundColor: color.hex}}
-                    />
+                        onClick={() => handleChange(color.hex)}
+                    >
+                        {color.hex}
+                    </div>
                 );
             })}
         </div>

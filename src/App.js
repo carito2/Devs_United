@@ -11,11 +11,11 @@ function App() {
     tweet,
     tweets,
     user,
-    usersProfiles,
+    userProfile,
     setTweet,
     setTweets,
     setUser,
-    setUsersProfiles
+    setUserProfile
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -37,35 +37,21 @@ function App() {
       });
     auth.onAuthStateChanged((user) => {
       setUser(user);
-      console.log(user);
+      firestore
+      .collection("usersProfile").where("uid", "==", user.uid)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          setUserProfile(doc.data());
+        })
+      })
     });
     return () => unsubscribe();
   },[])
 
-  useEffect(() => {
-    const unsubscribe = firestore
-      .collection("usersProfile")
-      .onSnapshot((snapshot) => {
-        const users = snapshot.docs.map((doc) => {
-          console.log(doc.data());
-          return {
-            email: doc.data().email,
-            profilePicture: doc.data().profilePicture,
-            userColor: doc.data().userColor,
-            userName: doc.data().userName,
-            uid: doc.data().uid,
-          }
-        })
-        setUsersProfiles(users);
-      });
-    return () => unsubscribe();
-  },[])
-
-
-
   return (
     <div className="App">
-      {user ? (user.username ? (<FeedPage />) : (<WelcomePage />)
+      {user ? (userProfile.userName ? (<FeedPage />) : (<WelcomePage />)
       ) : (
         <SignUpPage />
       )}

@@ -8,39 +8,49 @@ function WelcomePage() {
     const {
         user,
         setUser,
-        usersProfiles,
-        setUsersProfiles
+        userProfile,
+        setUserProfile
     } = useContext(AppContext);
-    let userName, userColor;
+
     const handleChange = (e) => {
+        console.log(e);
         setUser({...user, [e.target.name]: e.target.value});
-        console.log("user");
-        console.log(user)
+        console.log(user);
+    }
+
+    const handleColorChange = (color) => {
+        console.log(color);
+        setUser({...user, "userColor": color});
+        console.log(user);
     }
 
     const handleButton = (e) => {
         e.preventDefault();
-    //Paso 1 Enviar a la base de datos
-        let sendUser = firestore.collection("usersProfile").add(user);
-    //Paso 2 Traernos nuevamente
-        let requestDoc = sendUser.then((docRef) => {
-        return docRef.get()
-        })
-    //Paso 3
-        requestDoc.then((doc) => {
-        let newUserProfile = {
-            email: doc.data().email,
-            profilePicture: doc.data().photoURL,
-            userColor: doc.data().userColor,
-            userName: doc.data().userName,
-            uid: doc.data().uid,
+        let newUserProfile =  {
+            email: user.email,
+            profilePicture: user.photoURL,
+            userColor: user.userColor,
+            userName: user.userName,
+            uid: user.uid
         }
-    //Paso 4 Seteamos Tweets
-        setUsersProfiles([newUserProfile, ...usersProfiles]);
-        console.log("usersProfiles");
-        console.log(usersProfiles);
-        })
+        firestore.collection("usersProfile").add(newUserProfile);
+        setUserProfile(newUserProfile);
     }
+    
+    // const handleChange = (e) => {
+    //     setUser({...user, [e.target.name]: e.target.value});
+    //     console.log("user");
+    //     console.log(user)
+    // }
+
+    // const handleButton = (e) => {
+    //     e.preventDefault();
+    // //Paso 1 Enviar a la base de datos
+    //     firestore.collection("usersProfile").add(user);
+    
+    //     console.log("usersProfiles");
+    //     console.log(usersProfiles);
+    // }
 
     return (
         <section className="welcomePage">
@@ -51,7 +61,7 @@ function WelcomePage() {
                 <h1>Welcome <span className="betaName">Name!</span></h1>
                 <input className="inputUsername" type="text" name="userName" placeholder="Type your username" onChange={handleChange}/>
                 <p>Select your favorite color</p>
-                <BoxColors />
+                <BoxColors handleChange={handleColorChange}/>
                 <button className="buttonWelcome" onClick={handleButton}>Continue</button>
                 <footer className="footerWelcomePage">
                     <p className="paragraphFooter">© 2020 Devs_United - <span className="beta">BETA</span></p>

@@ -4,6 +4,7 @@ import {AppProvider} from "./contexts/AppContext";
 import App from './App';
 
 ReactDOM.render(
+
   <AppProvider>
     <App />
   </AppProvider>,

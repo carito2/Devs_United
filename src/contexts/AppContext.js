@@ -13,17 +13,17 @@ export const AppProvider = ({children}) => {
         uid: "",
     });
     const [user, setUser] = useState(null);
-    const [usersProfiles, setUsersProfiles] = useState([]);
+    const [userProfile, setUserProfile] = useState([]);
     return (
         <AppContext.Provider value={{
             tweet, 
             tweets, 
             user,
-            usersProfiles,
+            userProfile,
             setTweet, 
             setTweets, 
             setUser,
-            setUsersProfiles
+            setUserProfile
         }}>
             {children}
         </AppContext.Provider>
