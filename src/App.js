@@ -1,6 +1,15 @@
 import React, {useContext, useEffect} from "react";
 import {AppContext} from "./contexts/AppContext";
 import {firestore, loginWithGoogle, auth, logout} from "./firebase/firebase"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  useHistory,
+  useLocation
+} from "react-router-dom";
 import FeedPage from './pages/FeedPage';
 import SignUpPage from './pages/SignUpPage';
 import WelcomePage from './pages/WelcomePage';
