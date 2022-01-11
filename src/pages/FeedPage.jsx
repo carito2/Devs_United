@@ -1,10 +1,12 @@
 import React from "react";
+import {useParams} from "react-router-dom";
 import profilePicture from "../resources/images/profilePicture.svg";
 import logo from "../resources/images/logoSmallDevs.svg";
 import devsUnited from "../resources/images/devsUnited.svg";
 import TweetContainer from "../components/TweetContainer";
 
 function FeedPage() {
+    let params = useParams();
     return (
         <section className="feedPage">
             <header className="headerFeedPage">
@@ -23,6 +25,7 @@ function FeedPage() {
                     <button className="postButton">POST</button>
                 </div>
             </form>
+            
             <article>
                 <TweetContainer />
                 <TweetContainer />

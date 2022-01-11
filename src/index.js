@@ -14,7 +14,7 @@ ReactDOM.render(
     <AppProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />} />
+          <Route exact path="/" element={<App />} />
           <Route path="/signUp" element={<SignUpPage />} />
           <Route path="/welcome" element={<WelcomePage />} />
           <Route path="/feed/:username" element={<FeedPage />} />

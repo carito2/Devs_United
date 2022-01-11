@@ -2,13 +2,7 @@ import React, {useContext, useEffect} from "react";
 import {AppContext} from "./contexts/AppContext";
 import {firestore, loginWithGoogle, auth, logout} from "./firebase/firebase"
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useHistory,
-  useLocation
+  useNavigate, useParams
 } from "react-router-dom";
 import FeedPage from './pages/FeedPage';
 import SignUpPage from './pages/SignUpPage';
@@ -26,6 +20,10 @@ function App() {
     setUser,
     setUserProfile
   } = useContext(AppContext);
+
+  let navigate = useNavigate();
+  let params = useParams();
+  
 
   useEffect(() => {
     const unsubscribe = firestore
@@ -60,7 +58,7 @@ function App() {
 
   return (
     <div className="App">
-      {user ? (userProfile.userName ? (<FeedPage />) : (<WelcomePage />)
+      {user ? (userProfile.userName ? (navigate(`/feed/${userProfile.userName}`)) : (<WelcomePage />)
       ) : (
         <SignUpPage />
       )}
