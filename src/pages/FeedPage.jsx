@@ -1,5 +1,5 @@
 import React from "react";
-import {useParams} from "react-router-dom";
+import {useParams, Outlet} from "react-router-dom";
 import profilePicture from "../resources/images/profilePicture.svg";
 import logo from "../resources/images/logoSmallDevs.svg";
 import devsUnited from "../resources/images/devsUnited.svg";
@@ -31,6 +31,7 @@ function FeedPage() {
                 <TweetContainer />
                 <TweetContainer />
             </article>
+            <Outlet/>
         </section>
     )
 }

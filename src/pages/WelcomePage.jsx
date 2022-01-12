@@ -1,4 +1,5 @@
 import React, {useContext} from "react";
+import {Outlet} from "react-router-dom";
 import {AppContext} from "../contexts/AppContext";
 import {firestore} from "../firebase/firebase"
 import logo from "../resources/images/logoDevsUnited.svg";
@@ -67,6 +68,7 @@ function WelcomePage() {
                     <p className="paragraphFooter">© 2020 Devs_United - <span className="beta">BETA</span></p>
                 </footer>
             </article>
+            <Outlet/>
         </section>
     )
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import {Outlet} from "react-router";
 import back from "../resources/images/back.svg";
 import logout from "../resources/images/logout.svg";
 import profilePicture from "../resources/images/profilePicture.svg";
@@ -20,6 +21,7 @@ function UserProfileB() {
             <TweetContainer />
             <TweetContainer />
             <TweetContainer />
+            <Outlet />
         </section>
     )
 }

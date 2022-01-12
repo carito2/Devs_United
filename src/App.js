@@ -1,12 +1,13 @@
 import React, {useContext, useEffect} from "react";
+import {Routes, Route, useNavigate, useParams} from "react-router-dom";
 import {AppContext} from "./contexts/AppContext";
-import {firestore, loginWithGoogle, auth, logout} from "./firebase/firebase"
-import {
-  useNavigate, useParams
-} from "react-router-dom";
-import FeedPage from './pages/FeedPage';
 import SignUpPage from './pages/SignUpPage';
 import WelcomePage from './pages/WelcomePage';
+import FeedPage from './pages/FeedPage';
+import UserProfile from './pages/UserProfile';
+import UserProfileB from './pages/UserProfileB';
+import NotFound from "./pages/NotFound";
+import {firestore, loginWithGoogle, auth, logout} from "./firebase/firebase";
 import './styles/App.css';
 
 function App() {
@@ -43,25 +44,33 @@ function App() {
         setTweets(tweets);
       });
     auth.onAuthStateChanged((user) => {
-      setUser(user);
-      firestore
-      .collection("usersProfile").where("uid", "==", user.uid)
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          setUserProfile(doc.data());
-        })
+      if(user) {
+        setUser(user);
+        firestore
+        .collection("usersProfile").where("uid", "==", user.uid)
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            setUserProfile(doc.data());
+          })
+          navigate("feed");
       })
+      }
     });
     return () => unsubscribe();
   },[])
+  
 
   return (
     <div className="App">
-      {user ? (userProfile.userName ? (navigate(`/feed/${userProfile.userName}`)) : (<WelcomePage />)
-      ) : (
-        <SignUpPage />
-      )}
+      <Routes>
+          <Route path="/" element={<SignUpPage />} />
+          <Route path="welcome" element={<WelcomePage />} />
+          <Route path="feed" element={<FeedPage />} />
+          <Route path="userProfile/:username" element={<UserProfile />} />
+          <Route path="userProfileB/:username" element={<UserProfileB />} />
+          <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }
