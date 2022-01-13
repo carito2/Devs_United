@@ -1,20 +1,21 @@
-import React from "react";
-import profilePicture from "../resources/images/profilePicture.svg"
+import React, {useContext} from "react";
 import logoLike from "../resources/images/logoLike.svg"
+import { AppContext } from "../contexts/AppContext";
 
-function TweetContainer() {
+function TweetContainer({ profilePicture, userName, date, tweet, numLike }) {
+    
     return(
         <div className="tweetContainer">
             <img src={profilePicture} alt="Foto del perfil de usuario" className="profilePicture"/>
             <div className="tweetBox">
                 <div className="headerBox">
-                    <h1 className="usernameTitle">Username</h1>
-                    <p className="tweetDate"> - 5 jun.</p>
+                    <h1 className="usernameTitle">{userName}</h1>
+                    <p className="tweetDate">{` - ${date}`}</p>
                 </div>
-                <p className="tweetContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
+                <p className="tweetContent">{tweet}</p>
                 <div className="likeBox">
                     <img src={logoLike} alt="Corazón de like" className="logoLike"/>
-                    <p className="numberOfLikes">100</p>
+                    <p className="numberOfLikes">{numLike}</p>
                 </div>
             </div>
         </div>

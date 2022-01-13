@@ -16,9 +16,9 @@ function SignUpPage() {
     const handleButtonLogin = () => {
         loginWithGoogle();
         if(user && userProfile.userName){
-            navigate("feed");
+            navigate("/feed");
         } else {
-            navigate("welcome");
+            navigate("/welcome");
         }
     };
 

@@ -143,10 +143,6 @@ input.inputUsername::placeholder{
   border: 2px solid #FFFFFF;
 }
 
-.containerColor::selection{
-  border: 2px solid #FFFFFF;
-}
-
 button.buttonWelcome {
   background-color: #00DA76;
   border: none;
@@ -213,12 +209,23 @@ form.formBox textarea.inputTweet{
   background-color: #2F112D;
   border: none;
   height: 113px;
+  outline: none;
   width: 500px;
 }
 
 form.formBox textarea.inputTweet::placeholder{
   color: #914D8B;
   font-size: 20px;
+}
+
+form.formBox .progressBar {
+  width: 100%;
+}
+
+form.formBox .progress {
+  width: 1%;
+  height: 3px;
+  background-color: #00DA76;
 }
 
 form.formBox button.postButton{
@@ -406,3 +413,4 @@ div.profileTabs button.tab:hover, div.profileTabs button.tab:active{
   background-color: #60265B;
   color: #150714;
 }
+

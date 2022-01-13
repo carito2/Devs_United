@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from "react";
-import {Routes, Route, useNavigate, useParams} from "react-router-dom";
+import {Routes, Route, useNavigate, useParams, Navigate} from "react-router-dom";
 import {AppContext} from "./contexts/AppContext";
 import SignUpPage from './pages/SignUpPage';
 import WelcomePage from './pages/WelcomePage';
@@ -33,18 +33,22 @@ function App() {
         const tweets = snapshot.docs.map((doc) => {
           console.log(doc.data());
           return {
+            profilePicture: doc.data().profilePicture,
             tweet: doc.data().tweet,
-            username: doc.data().username,
+            username: doc.data().autor,
             email: doc.data().email,
             numLike: doc.data().numLike,
             date: doc.data().date,
-            uid: doc.data().uid
+            uid: doc.data().uid,
+            id: doc.id
           }
         })
         setTweets(tweets);
+        console.log(tweets);
       });
     auth.onAuthStateChanged((user) => {
       if(user) {
+        console.log(user);
         setUser(user);
         firestore
         .collection("usersProfile").where("uid", "==", user.uid)
@@ -53,7 +57,6 @@ function App() {
           querySnapshot.forEach((doc) => {
             setUserProfile(doc.data());
           })
-          navigate("feed");
       })
       }
     });
@@ -64,12 +67,15 @@ function App() {
   return (
     <div className="App">
       <Routes>
-          <Route path="/" element={<SignUpPage />} />
-          <Route path="welcome" element={<WelcomePage />} />
-          <Route path="feed" element={<FeedPage />} />
-          <Route path="userProfile/:username" element={<UserProfile />} />
-          <Route path="userProfileB/:username" element={<UserProfileB />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/">
+            <Route path="signUp" element={<SignUpPage />} />
+            <Route path="welcome" element={<WelcomePage />} />
+            <Route path="feed" element={<FeedPage />} />
+            <Route path="userProfile/:username" element={<UserProfile />} />
+            <Route path="userProfileB/:username" element={<UserProfileB />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<Navigate replace to="/signUp" />} />
+          </Route>
       </Routes>
     </div>
   );
