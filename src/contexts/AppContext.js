@@ -14,16 +14,19 @@ export const AppProvider = ({children}) => {
     });
     const [user, setUser] = useState(null);
     const [userProfile, setUserProfile] = useState([]);
+    const [loading, setLoading] = useState(true);
     return (
         <AppContext.Provider value={{
             tweet, 
             tweets, 
             user,
             userProfile,
+            loading,
             setTweet, 
             setTweets, 
             setUser,
-            setUserProfile
+            setUserProfile,
+            setLoading
         }}>
             {children}
         </AppContext.Provider>

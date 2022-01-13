@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {useParams, Outlet} from "react-router-dom";
+import {useParams, Outlet, Link} from "react-router-dom";
 import {firestore} from "../firebase/firebase";
 import {AppContext} from "../contexts/AppContext"
 import characterCounter from "../helpers/characterCounter";
@@ -14,6 +14,7 @@ function FeedPage() {
         userProfile,
         tweet, 
         tweets,
+        loading,
         setTweet
     } = useContext(AppContext);
     let params = useParams();
@@ -35,7 +36,6 @@ function FeedPage() {
             profilePicture: userProfile.profilePicture,
             uid: userProfile.uid
         }
-        console.log(newTweet);
         setTweet(newTweet);
         characterCounter(setCharacter);
     }
@@ -52,7 +52,10 @@ function FeedPage() {
     return (
         <section className="feedPage">
             <header className="headerFeedPage">
-                <img src={userProfile.profilePicture} alt="Foto de perfil" className="profilePicture"/>
+                <Link to="/userProfile">
+                    <img src={userProfile.profilePicture} alt="Foto de perfil" className="profilePicture" style={{border: `2px solid ${userProfile.userColor}`}}/>
+                </Link>
+                
                 <img src={logo} alt="Logo Devs_United" className="logoSmall"/>
                 <img src={devsUnited} alt="Título Devs_United" className="titleDevsUnited"/>
             </header>
@@ -73,19 +76,23 @@ function FeedPage() {
                 </div>
             </form>
             <article>
-                {tweets.length > 0 ? tweets.map((tweet) => {
-                    console.log(tweet.date);
-                    return (
-                        <TweetContainer 
-                            key={tweet.id}
-                            profilePicture={tweet.profilePicture}
-                            userName={tweet.username} 
-                            date={tweet.date}
-                            tweet={tweet.tweet}
-                            numLike={tweet.numLike}
-                        />
-                    ) 
-                }):(<h1>No hay nada</h1>)}
+                {!loading ? (
+                    tweets.length > 0 ? (tweets.map((tweet) => {
+                        return (
+                            <TweetContainer 
+                                key={tweet.id}
+                                profilePicture={tweet.profilePicture}
+                                userName={tweet.username} 
+                                date={tweet.date}
+                                tweet={tweet.tweet}
+                                likes={tweet.likes}
+                                numLike={tweet.numLike}
+                                userUid={userProfile.uid}
+                                id={tweet.id}
+                            />
+                        )}) 
+                    ) : (<h1>No hay nada</h1>)
+                ) : (<h1>...Loading</h1>)}
             </article>
             <Outlet/>
         </section>

@@ -169,7 +169,6 @@ section.feedPage header.headerFeedPage {
 }
 
 header.headerFeedPage img.profilePicture{
-  border: 2px solid #FFEA5C;
   border-radius: 50px;
   height: 33px;
   width: 33px;
@@ -396,7 +395,7 @@ article.userInformation div.profileTabs{
   width: 100%;
 }
 
-div.profileTabs button.tab{
+div.profileTabs .tab{
   background-color: #150714;
   border: none;
   color: #60265B;

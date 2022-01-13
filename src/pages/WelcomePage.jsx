@@ -16,15 +16,11 @@ function WelcomePage() {
     let navigate = useNavigate();
 
     const handleChange = (e) => {
-        console.log(e);
         setUser({...user, [e.target.name]: e.target.value});
-        console.log(user);
     }
 
     const handleColorChange = (color) => {
-        console.log(color);
         setUser({...user, "userColor": color});
-        console.log(user);
     }
 
     const handleButton = (e) => {

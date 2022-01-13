@@ -16,6 +16,7 @@ function App() {
     tweets,
     user,
     userProfile,
+    setLoading,
     setTweet,
     setTweets,
     setUser,
@@ -27,16 +28,17 @@ function App() {
   
 
   useEffect(() => {
+    setLoading(true);
     const unsubscribe = firestore
       .collection("tweets")
       .onSnapshot((snapshot) => {
         const tweets = snapshot.docs.map((doc) => {
-          console.log(doc.data());
           return {
             profilePicture: doc.data().profilePicture,
             tweet: doc.data().tweet,
             username: doc.data().autor,
             email: doc.data().email,
+            likes: doc.data().likes,
             numLike: doc.data().numLike,
             date: doc.data().date,
             uid: doc.data().uid,
@@ -44,11 +46,10 @@ function App() {
           }
         })
         setTweets(tweets);
-        console.log(tweets);
+        setLoading(false);
       });
     auth.onAuthStateChanged((user) => {
       if(user) {
-        console.log(user);
         setUser(user);
         firestore
         .collection("usersProfile").where("uid", "==", user.uid)
@@ -71,8 +72,8 @@ function App() {
             <Route path="signUp" element={<SignUpPage />} />
             <Route path="welcome" element={<WelcomePage />} />
             <Route path="feed" element={<FeedPage />} />
-            <Route path="userProfile/:username" element={<UserProfile />} />
-            <Route path="userProfileB/:username" element={<UserProfileB />} />
+            <Route path="userProfile" element={<UserProfile />} />
+            <Route path="userProfile/:username" element={<UserProfileB />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Navigate replace to="/signUp" />} />
           </Route>
