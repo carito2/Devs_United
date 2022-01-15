@@ -284,6 +284,10 @@ div.headerBox p.tweetDate{
   margin-left: 12px;
 }
 
+div.headerBox img.iconTrash{
+  height: 18px;
+}
+
 div.tweetBox p.tweetContent{
   font-family: "Fira Code", monospace;
   font-size: 18px;
@@ -374,7 +378,6 @@ section.userProfile article.userInformation {
 }
 
 article.userInformation img.profilePicture{
-  border: 5px solid #FFEA5C;
   border-radius: 100px;
   height: 134px;
   margin: 22px 0px;
@@ -390,12 +393,12 @@ article.userInformation h1.username{
   margin-bottom: 30px;
 }
 
-article.userInformation div.profileTabs{
+article.userInformation nav.profileTabs{
   display: flex;
   width: 100%;
 }
 
-div.profileTabs .tab{
+nav.profileTabs .tab{
   background-color: #150714;
   border: none;
   color: #60265B;

@@ -1,32 +1,48 @@
-import React from "react";
-import {Outlet} from "react-router";
+import React, { useContext } from "react";
+import {Outlet, Route, useNavigate} from "react-router";
+import {logout} from "../firebase/firebase";
 import back from "../resources/images/back.svg";
 import logoutIcon from "../resources/images/logout.svg";
 import profilePicture from "../resources/images/profilePicture.svg";
 import TweetContainer from "../components/TweetContainer";
 import { NavLink } from "react-router-dom";
+import { AppContext } from "../contexts/AppContext";
+import Favorites from "../components/Favorites";
+import Posts from "../components/Posts"
 
 function UserProfile() {
+    const {
+        userProfile,
+        setUser,
+        setUserProfile
+    } = useContext(AppContext);
+
+    let navigate = useNavigate();
+
+    const logoutHandler = () => {
+        console.log("se activo logout");
+        logout();
+        setUser("");
+        setUserProfile("");
+        navigate("/");
+    }
     return (
         <section className="userProfile">
             <header className="headerUserProfile">
                 <div className="returnBox">
-                    <img src={back} alt="Boton volver atrás" className="buttonBack"/>
-                    <h1 className="username">Username</h1>
+                    <img src={back} alt="Boton volver atrás" className="buttonBack" onClick={() => navigate("/feed")} />
+                    <h1 className="username">{userProfile.userName}</h1>
                 </div>
-                <button className="buttonLogout" >LOGOUT <img src={logoutIcon} alt="Boton cerrar sesión" className="logoLogout"/></button>
+                <button className="buttonLogout" onClick={logoutHandler} >LOGOUT <img src={logoutIcon} alt="Boton cerrar sesión" className="logoLogout"/></button>
             </header>
             <article className="userInformation">
-                <img src={profilePicture} alt="Foto de perfil" className="profilePicture"/>
-                <h1 className="username">Username</h1>
-                <div className="profileTabs">
-                    <NavLink to="userProfile/posts" className="tab">Posts</NavLink>
-                    <NavLink to="userProfile/favorites" className="tab">Favorites</NavLink>
-                </div>
+                <img src={userProfile.profilePicture} alt="Foto de perfil" className="profilePicture" style={{border: `5px solid ${userProfile.userColor}`}}/>
+                <h1 className="username" style={{backgroundColor: `${userProfile.userColor}`}}>{userProfile.userName}</h1>
+                <nav className="profileTabs">
+                    <NavLink to="posts" className="tab" >Posts</NavLink>
+                    <NavLink to="favorites" className="tab">Favorites</NavLink>
+                </nav>
             </article>
-            <TweetContainer />
-            <TweetContainer />
-            <TweetContainer />
             <Outlet />
         </section>
     )

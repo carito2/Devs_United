@@ -17,7 +17,6 @@ function FeedPage() {
         loading,
         setTweet
     } = useContext(AppContext);
-    let params = useParams();
     const [character, setCharacter] = useState(0);
 
     const handleChangeInputTweet = (e) => {
@@ -52,7 +51,7 @@ function FeedPage() {
     return (
         <section className="feedPage">
             <header className="headerFeedPage">
-                <Link to="/userProfile">
+                <Link to="/userProfile/posts">
                     <img src={userProfile.profilePicture} alt="Foto de perfil" className="profilePicture" style={{border: `2px solid ${userProfile.userColor}`}}/>
                 </Link>
                 
@@ -89,6 +88,7 @@ function FeedPage() {
                                 numLike={tweet.numLike}
                                 userUid={userProfile.uid}
                                 id={tweet.id}
+                                uid={tweet.uid}
                             />
                         )}) 
                     ) : (<h1>No hay nada</h1>)

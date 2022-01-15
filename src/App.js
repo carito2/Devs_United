@@ -9,6 +9,8 @@ import UserProfileB from './pages/UserProfileB';
 import NotFound from "./pages/NotFound";
 import {firestore, loginWithGoogle, auth, logout} from "./firebase/firebase";
 import './styles/App.css';
+import Posts from "./components/Posts";
+import Favorites from "./components/Favorites";
 
 function App() {
   const {
@@ -24,7 +26,7 @@ function App() {
   } = useContext(AppContext);
 
   let navigate = useNavigate();
-  let params = useParams();
+  const params = useParams();
   
 
   useEffect(() => {
@@ -72,8 +74,11 @@ function App() {
             <Route path="signUp" element={<SignUpPage />} />
             <Route path="welcome" element={<WelcomePage />} />
             <Route path="feed" element={<FeedPage />} />
-            <Route path="userProfile" element={<UserProfile />} />
-            <Route path="userProfile/:username" element={<UserProfileB />} />
+            <Route path="userProfile" element={<UserProfile />}>
+              <Route path="posts" element={<Posts />} />
+              <Route path="favorites" element={<Favorites />} />
+            </Route>
+            <Route path="userProfileB/:username" element={<UserProfileB />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Navigate replace to="/signUp" />} />
           </Route>
