@@ -10,29 +10,33 @@ function WelcomePage() {
         user,
         setUser,
         userProfile,
+        usersProfilesList,
         setUserProfile
     } = useContext(AppContext);
 
     let navigate = useNavigate();
+    let userName;
+    let userColor;
 
     const handleChange = (e) => {
-        setUser({...user, [e.target.name]: e.target.value});
+        userName = e.target.value;
     }
 
     const handleColorChange = (color) => {
-        setUser({...user, "userColor": color});
+        userColor = color;
     }
 
     const handleButton = (e) => {
         
         e.preventDefault();
-        if(user.userName && user.userColor) {
+        console.log("Entre al boton");
+        if(userName && userColor) {
             let newUserProfile =  {
                 email: user.email,
                 name: user.displayName,
                 profilePicture: user.photoURL,
-                userColor: user.userColor,
-                userName: user.userName,
+                userColor: userColor,
+                userName: userName,
                 uid: user.uid
             }
             firestore.collection("usersProfile").add(newUserProfile);

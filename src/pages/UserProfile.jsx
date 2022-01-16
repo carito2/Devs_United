@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import {Outlet, Route, useNavigate} from "react-router";
+import {Outlet, Link, useNavigate} from "react-router-dom";
 import {logout} from "../firebase/firebase";
 import back from "../resources/images/back.svg";
 import logoutIcon from "../resources/images/logout.svg";
@@ -30,7 +30,9 @@ function UserProfile() {
         <section className="userProfile">
             <header className="headerUserProfile">
                 <div className="returnBox">
-                    <img src={back} alt="Boton volver atrás" className="buttonBack" onClick={() => navigate("/feed")} />
+                    <Link to="/feed">
+                        <img src={back} alt="Boton volver atrás" className="buttonBack" />
+                    </Link>
                     <h1 className="username">{userProfile.userName}</h1>
                 </div>
                 <button className="buttonLogout" onClick={logoutHandler} >LOGOUT <img src={logoutIcon} alt="Boton cerrar sesión" className="logoLogout"/></button>

@@ -18,7 +18,9 @@ function FeedPage() {
         setTweet
     } = useContext(AppContext);
     const [character, setCharacter] = useState(0);
-
+    
+    console.log("userProfile en Feed");
+    console.log(userProfile);
     const handleChangeInputTweet = (e) => {
         e.preventDefault();
         const optionDate = {
@@ -54,8 +56,10 @@ function FeedPage() {
                 <Link to="/userProfile/posts">
                     <img src={userProfile.profilePicture} alt="Foto de perfil" className="profilePicture" style={{border: `2px solid ${userProfile.userColor}`}}/>
                 </Link>
+                <Link to="/welcome">
+                    <img src={logo} alt="Logo Devs_United" className="logoSmall"/>
+                </Link>
                 
-                <img src={logo} alt="Logo Devs_United" className="logoSmall"/>
                 <img src={devsUnited} alt="Título Devs_United" className="titleDevsUnited"/>
             </header>
             <form className="formBox">

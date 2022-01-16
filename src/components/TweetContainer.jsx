@@ -19,8 +19,12 @@ function TweetContainer({
     uid, 
     userUid, 
     likes }) {
+    const { usersProfilesList } = useContext(AppContext);
+    console.log("twitercontainser");
 
-
+    let userProperty = usersProfilesList.filter((user) => user.uid === uid).shift();
+    console.log(userProperty);
+    
     let userLike = likes && likes.includes(userUid);
 
     const updateLike = () => {
@@ -45,12 +49,11 @@ function TweetContainer({
                 });	
             }
     }
-
+    
     const deleteTweet = (id) => {
         let confirmTweet = window.confirm("¿Estás seguro de querer eliminar este Tweet?")
         confirmTweet && firestore.doc(`tweets/${id}`).delete();
     }
-
 
     return(
         <div className="tweetContainer">
@@ -60,7 +63,7 @@ function TweetContainer({
 
             <div className="tweetBox">
                 <div className="headerBox">
-                    <h1 className="usernameTitle">{userName}</h1>
+                    <h1 className="usernameTitle" style={{backgroundColor: `${userProperty && userProperty.userColor}`}}>{userProperty && userProperty.userName}</h1>
                     <p className="tweetDate">{` - ${date}`}</p>
                     {userUid === uid && <img src={iconTrash} className="iconTrash" alt="Icono de eliminar" onClick={() => deleteTweet(id)} />}
                     

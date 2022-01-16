@@ -15,10 +15,10 @@ export const AppProvider = ({children}) => {
     });
     const [user, setUser] = useState(null);
     const [userProfile, setUserProfile] = useState([]);
+    const [usersProfilesList, setUsersProfilesList] = useState([]);
     const [loading, setLoading] = useState(true);
-
+   
     useEffect(() => {
-        if(user) {
             setLoading(true);
             const unsubscribe = firestore
                 .collection("tweets")
@@ -37,22 +37,50 @@ export const AppProvider = ({children}) => {
                     }
                     })
                     setTweets(tweets);
-                    setLoading(false);
                 });
-                return () => unsubscribe();
-            }
-        auth.onAuthStateChanged((user) => {
-            setUser(user);
-            firestore
-            .collection("usersProfile").where("uid", "==", user.uid)
-            .get()
-            .then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    setUserProfile(doc.data());
+
+                const unsubscribeUsers = firestore
+                .collection("usersProfile")
+                .onSnapshot((snapshot) => {
+                    const users = snapshot.docs.map((doc) => {
+                    return {
+                        profilePicture: doc.data().profilePicture,
+                        name: doc.data().name,
+                        userName: doc.data().userName,
+                        userColor: doc.data().userColor,
+                        email: doc.data().email,
+                        uid: doc.data().uid,
+                        id: doc.id
+                    }
+                    })
+                    setUsersProfilesList(users); 
+                    setLoading(false);
+                });  
+                
+            auth.onAuthStateChanged((userAuth) => {
+                console.log("Ingreso a onAuth");
+                setUser(userAuth);
+                console.log("esto es userAuth");
+                console.log(userAuth);
+                userAuth && firestore
+                .collection("usersProfile").where("uid", "==", userAuth.uid)
+                .get()
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        setUserProfile(doc.data());
+                        console.log("doc.data()");
+                        console.log(doc.data());
+                    })
                 })
             })
-        });
-    },[user]);
+            setLoading(false);
+            return () => {   
+                unsubscribe(); 
+                unsubscribeUsers();
+            }
+        },[]);
+        
+
 
     return (
         <AppContext.Provider value={{
@@ -60,6 +88,7 @@ export const AppProvider = ({children}) => {
             tweets, 
             user,
             userProfile,
+            usersProfilesList,
             loading,
             setTweet, 
             setTweets, 

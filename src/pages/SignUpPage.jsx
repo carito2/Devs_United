@@ -8,18 +8,22 @@ import logoGoogle from "../resources/images/logoGoogle.svg";
 function SignUpPage() {
     const {
         user,
-        userProfile
+        userProfile, 
+        usersProfilesList,
+        setUserProfile,
     } = useContext(AppContext);
     
     let navigate = useNavigate();
 
     const handleButtonLogin = () => {
         loginWithGoogle();
-        if(user && userProfile.userName){
-            navigate("/feed");
-        } else {
-            navigate("/welcome");
-        }
+        // if(user && userProfile.userName){
+        //     console.log("me voy a feed rectm");
+        //     navigate("/feed");
+        // } else {
+        //     console.log("me voy a welcome rectm");
+        //     navigate("/welcome");
+        // }
     };
 
     return (
