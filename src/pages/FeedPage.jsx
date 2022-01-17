@@ -3,11 +3,10 @@ import {useParams, Outlet, Link} from "react-router-dom";
 import {firestore} from "../firebase/firebase";
 import {AppContext} from "../contexts/AppContext"
 import characterCounter from "../helpers/characterCounter";
-import profilePicture from "../resources/images/profilePicture.svg";
+import sortByDates from "../helpers/sortByDates";
 import logo from "../resources/images/logoSmallDevs.svg";
 import devsUnited from "../resources/images/devsUnited.svg";
 import TweetContainer from "../components/TweetContainer";
-import UserProfile from "./UserProfile";
 
 function FeedPage() {
     const {
@@ -22,14 +21,10 @@ function FeedPage() {
     
     const handleChangeInputTweet = (e) => {
         e.preventDefault();
-        const optionDate = {
-            day: "numeric",
-            month: "short"
-        }
 
         let newTweet = {
             autor: userProfile.userName,
-            date: new Date().toLocaleDateString("es-CL", optionDate),
+            date: Date.now(),
             email: userProfile.email,
             tweet: e.target.value,
             numLike: 0,
@@ -46,8 +41,9 @@ function FeedPage() {
         setTweet({});
         setCharacter(0);
     }
-
     
+    
+    // sortByDates(tweets);
 
     return (
         <section className="feedPage">
@@ -85,7 +81,7 @@ function FeedPage() {
                                 key={tweet.id}
                                 profilePicture={tweet.profilePicture}
                                 userName={tweet.username} 
-                                date={tweet.date}
+                                dateTweet={tweet.date}
                                 tweet={tweet.tweet}
                                 likes={tweet.likes}
                                 numLike={tweet.numLike}

@@ -18,7 +18,7 @@ function Posts () {
                                 key={post.id}
                                 profilePicture={post.profilePicture}
                                 userName={post.username} 
-                                date={post.date}
+                                dateTweet={post.date}
                                 tweet={post.tweet}
                                 likes={post.likes}
                                 numLike={post.numLike}

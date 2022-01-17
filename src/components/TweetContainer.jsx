@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 function TweetContainer({ 
     profilePicture, 
     userName, 
-    date, 
+    dateTweet, 
     tweet, 
     numLike, 
     id,
@@ -20,6 +20,12 @@ function TweetContainer({
     userUid, 
     likes }) {
     const { usersProfilesList } = useContext(AppContext);
+
+    const optionDate = {
+        day: "numeric",
+        month: "short"
+    }
+    let dateConvert = new Date(dateTweet).toLocaleDateString("es-CL", optionDate);
 
     let userProperty = usersProfilesList.filter((user) => user.uid === uid).shift();
     
@@ -62,7 +68,7 @@ function TweetContainer({
             <div className="tweetBox">
                 <div className="headerBox">
                     <h1 className="usernameTitle" style={{backgroundColor: `${userProperty && userProperty.userColor}`}}>{userProperty && userProperty.userName}</h1>
-                    <p className="tweetDate">{` - ${date}`}</p>
+                    <p className="tweetDate">{` - ${dateConvert}`}</p>
                     {userUid === uid && <img src={iconTrash} className="iconTrash" alt="Icono de eliminar" onClick={() => deleteTweet(id)} />}
                     
                 </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext } from "react";
 import {firestore, auth} from "../firebase/firebase";
+import sortByDates from "../helpers/sortByDates";
 
 export const AppContext = createContext();
 
@@ -17,7 +18,8 @@ export const AppProvider = ({children}) => {
     const [userProfile, setUserProfile] = useState([]);
     const [usersProfilesList, setUsersProfilesList] = useState([]);
     const [loading, setLoading] = useState(true);
-   
+    
+    
     useEffect(() => {
             setLoading(true);
             const unsubscribe = firestore
@@ -36,6 +38,7 @@ export const AppProvider = ({children}) => {
                         id: doc.id
                     }
                     })
+                    sortByDates(tweets);
                     setTweets(tweets);
                 });
 
