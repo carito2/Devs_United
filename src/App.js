@@ -16,10 +16,6 @@ import './styles/App.css';
 
 function App() {
   const {user, userProfile} = useContext(AppContext);
-  console.log("user");
-  console.log(user);
-  console.log("userProfile");
-  console.log(userProfile);
 
   return (
     <div className="App">
