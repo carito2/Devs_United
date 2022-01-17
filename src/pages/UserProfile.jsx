@@ -20,10 +20,9 @@ function UserProfile() {
     let navigate = useNavigate();
 
     const logoutHandler = () => {
-        console.log("se activo logout");
         logout();
-        setUser("");
-        setUserProfile("");
+        // setUser(null)
+        // setUserProfile(null);
         navigate("/");
     }
     return (

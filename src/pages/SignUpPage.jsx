@@ -1,29 +1,13 @@
-import React, {useContext} from "react";
-import { Navigate, Outlet, useNavigate } from "react-router";
-import {AppContext} from "../contexts/AppContext";
+import React from "react";
+import { Outlet} from "react-router";
 import { loginWithGoogle } from "../firebase/firebase";
 import logo from "../resources/images/logoDevsUnited.svg";
 import logoGoogle from "../resources/images/logoGoogle.svg";
 
 function SignUpPage() {
-    const {
-        user,
-        userProfile, 
-        usersProfilesList,
-        setUserProfile,
-    } = useContext(AppContext);
-    
-    let navigate = useNavigate();
 
     const handleButtonLogin = () => {
         loginWithGoogle();
-        // if(user && userProfile.userName){
-        //     console.log("me voy a feed rectm");
-        //     navigate("/feed");
-        // } else {
-        //     console.log("me voy a welcome rectm");
-        //     navigate("/welcome");
-        // }
     };
 
     return (

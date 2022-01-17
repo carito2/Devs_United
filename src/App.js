@@ -15,13 +15,12 @@ import './styles/App.css';
 
 
 function App() {
-  const {user, userProfile, isLogged} = useContext(AppContext);
-console.log("user desde App");
-console.log(user);
-console.log("userProfile desde App");
-console.log(userProfile);
+  const {user, userProfile} = useContext(AppContext);
+  console.log("user");
+  console.log(user);
+  console.log("userProfile");
+  console.log(userProfile);
 
-let verifiedUserProfile = Object.keys(userProfile).length > 0 ? "true" : "false";
   return (
     <div className="App">
       <Routes>

@@ -58,18 +58,13 @@ export const AppProvider = ({children}) => {
                 });  
                 
             auth.onAuthStateChanged((userAuth) => {
-                console.log("Ingreso a onAuth");
                 setUser(userAuth);
-                console.log("esto es userAuth");
-                console.log(userAuth);
                 userAuth && firestore
                 .collection("usersProfile").where("uid", "==", userAuth.uid)
                 .get()
                 .then((querySnapshot) => {
                     querySnapshot.forEach((doc) => {
-                        setUserProfile(doc.data());
-                        console.log("doc.data()");
-                        console.log(doc.data());
+                        setUserProfile(doc.data());                    
                     })
                 })
             })

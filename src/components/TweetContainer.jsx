@@ -20,10 +20,8 @@ function TweetContainer({
     userUid, 
     likes }) {
     const { usersProfilesList } = useContext(AppContext);
-    console.log("twitercontainser");
 
     let userProperty = usersProfilesList.filter((user) => user.uid === uid).shift();
-    console.log(userProperty);
     
     let userLike = likes && likes.includes(userUid);
 

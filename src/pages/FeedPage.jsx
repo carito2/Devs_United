@@ -17,10 +17,9 @@ function FeedPage() {
         loading,
         setTweet
     } = useContext(AppContext);
+    
     const [character, setCharacter] = useState(0);
     
-    console.log("userProfile en Feed");
-    console.log(userProfile);
     const handleChangeInputTweet = (e) => {
         e.preventDefault();
         const optionDate = {

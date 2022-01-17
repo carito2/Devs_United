@@ -8,9 +8,6 @@ import BoxColors from "../components/BoxColors"
 function WelcomePage() {
     const {
         user,
-        setUser,
-        userProfile,
-        usersProfilesList,
         setUserProfile
     } = useContext(AppContext);
 
