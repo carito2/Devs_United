@@ -15,7 +15,7 @@ function WelcomePage() {
     } = useContext(AppContext);
 
     let navigate = useNavigate();
-    const [id, setId] = useState();
+    
     let userName;
     let userColor;
 
@@ -27,25 +27,24 @@ function WelcomePage() {
     const handleColorChange = (color) => {
         userColor = color;
     }
+
     let verifiedUserProfile = usersProfilesList.find((userProfile) => userProfile.uid === user.uid) ? "true" : "false";
-    console.log(verifiedUserProfile);
-    firestore
-        .collection("usersProfile").where("uid", "==", userProfile.uid)
-        .get()
-        .then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {setId(doc.id)});                    
-        })
-                
+    
 
     const handleButton = (e) => {
         e.preventDefault();
         if(userName && userColor) {
             if(verifiedUserProfile){
-                const modifiedUser = firestore.doc(`usersProfile/${id}`);
-                modifiedUser
-                .update({
-                    userColor: userColor,
-                    userName: userName
+                firestore.collection("usersProfile").where("uid", "==", userProfile.uid)
+                .get()
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        firestore.doc(`usersProfile/${doc.id}`)
+                        .update({
+                            userColor: userColor,
+                            userName: userName
+                        })
+                    })
                 })
                 .then(() => {
                     let newUser = {
