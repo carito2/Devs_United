@@ -1,6 +1,5 @@
-import React, {useContext, useEffect} from "react";
-import {Routes, Route, Navigate} from "react-router-dom";
-import {AppContext} from "./contexts/AppContext";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SignUpPage from './pages/SignUpPage';
 import WelcomePage from './pages/WelcomePage';
@@ -15,7 +14,6 @@ import './styles/App.css';
 
 
 function App() {
-  const {user, userProfile} = useContext(AppContext);
 
   return (
     <div className="App">

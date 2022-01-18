@@ -1,10 +1,11 @@
-import React, {useContext, useState} from "react";
-import {Outlet, useNavigate} from "react-router-dom";
-import {AppContext} from "../contexts/AppContext";
-import {firestore} from "../firebase/firebase";
-import getIdUser from "../helpers/getIdUser";
-import logo from "../resources/images/logoDevsUnited.svg";
+import React, { useContext } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import { AppContext } from "../contexts/AppContext";
+import { firestore } from "../firebase/firebase";
 import BoxColors from "../components/BoxColors"
+import HeaderWelcome from "../components/HeaderWelcome";
+import FooterWelcome from "../components/FooterWelcome";
+import Button from "../components/Button";
 
 function WelcomePage() {
     const {
@@ -15,7 +16,7 @@ function WelcomePage() {
     } = useContext(AppContext);
 
     let navigate = useNavigate();
-    
+
     let userName;
     let userColor;
 
@@ -24,12 +25,15 @@ function WelcomePage() {
         userName = e.target.value;
     }
 
-    const handleColorChange = (color) => {
-        userColor = color;
+    const handleColorChange = (color, setSelectColor, e) => {
+        userColor = color.hex;
+        setSelectColor(e);
     }
 
-    let verifiedUserProfile = usersProfilesList.find((userProfile) => userProfile.uid === user.uid) ? "true" : "false";
-    
+    //Se crea variable para verificar si existe o no el usuario dentro de la lista de perfiles creados
+    let verifiedUserProfile = usersProfilesList.find((userProfile) => userProfile.uid === user.uid) 
+        ? "true" 
+        : "false";
 
     const handleButton = (e) => {
         e.preventDefault();
@@ -75,18 +79,18 @@ function WelcomePage() {
     }
     return (
         <section className="welcomePage">
-            <header className="logoContainer">
-                <img className="logoWelcome" src={logo} alt="Logo Devs_United" />
-            </header>
+            <HeaderWelcome />
             <article className="containerSignIn">
                 <h1>Welcome <span className="betaName">{user.displayName}!</span></h1>
                 <input className="inputUsername" type="text" name="userName" placeholder="Type your username" onChange={handleChange}/>
                 <p>Select your favorite color</p>
                 <BoxColors handleChange={handleColorChange}/>
-                <button className="buttonWelcome" onClick={handleButton}>Continue</button>
-                <footer className="footerWelcomePage">
-                    <p className="paragraphFooter">© 2020 Devs_United - <span className="beta">BETA</span></p>
-                </footer>
+                <Button 
+                    classNameBtn={"buttonWelcome"}
+                    onClick={handleButton}
+                    content={"Continue"}
+                />
+                <FooterWelcome />
             </article>
             <Outlet/>
         </section>

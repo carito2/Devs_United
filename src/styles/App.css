@@ -138,8 +138,8 @@ input.inputUsername::placeholder{
   width: 58px;
 }
 
-.containerColor:active{
-  border: 2px solid #FFFFFF;
+.containerColor.borderSelected {
+  border: 5px solid #FFFFFF;
 }
 
 button.buttonWelcome {
@@ -414,4 +414,5 @@ div.profileTabs button.tab:hover, div.profileTabs button.tab:active{
   background-color: #60265B;
   color: #150714;
 }
+
 
