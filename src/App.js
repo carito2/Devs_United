@@ -29,7 +29,7 @@ function App() {
               <Route path="posts" element={<Posts />} />
               <Route path="favorites" element={<Favorites />} />
             </Route>
-            <Route path="userProfileB/:username" element={<UserProfileB />} />
+            <Route path="userProfileB/:uid" element={<UserProfileB />} />
             <Route path="*" element={<NotFound />} />
             
           </Route>

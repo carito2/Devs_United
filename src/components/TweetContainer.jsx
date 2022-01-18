@@ -25,6 +25,7 @@ function TweetContainer({
         day: "numeric",
         month: "short"
     }
+
     let dateConvert = new Date(dateTweet).toLocaleDateString("es-CL", optionDate);
 
     let userProperty = usersProfilesList.filter((user) => user.uid === uid).shift();
@@ -61,7 +62,7 @@ function TweetContainer({
 
     return(
         <div className="tweetContainer">
-            <Link to={userUid === uid ? "/userProfile" : `/userProfileB/${userName}`}>
+            <Link to={userUid === uid ? "/userProfile/posts" : `/userProfileB/${uid}`}>
                 <img src={profilePicture} alt="Foto del perfil de usuario" className="profilePicture" />
             </Link>
 

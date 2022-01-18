@@ -1,7 +1,8 @@
 import React, {useContext, useState} from "react";
 import {Outlet, useNavigate} from "react-router-dom";
 import {AppContext} from "../contexts/AppContext";
-import {firestore} from "../firebase/firebase"
+import {firestore} from "../firebase/firebase";
+import getIdUser from "../helpers/getIdUser";
 import logo from "../resources/images/logoDevsUnited.svg";
 import BoxColors from "../components/BoxColors"
 
@@ -28,14 +29,12 @@ function WelcomePage() {
     }
     let verifiedUserProfile = usersProfilesList.find((userProfile) => userProfile.uid === user.uid) ? "true" : "false";
     console.log(verifiedUserProfile);
-    const document = firestore
-                .collection("usersProfile").where("uid", "==", userProfile.uid)
-                .get()
-                .then((querySnapshot) => {
-                    querySnapshot.forEach((doc) => {
-                        setId(doc.id)});                    
-                    })
-    console.log(id);
+    firestore
+        .collection("usersProfile").where("uid", "==", userProfile.uid)
+        .get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {setId(doc.id)});                    
+        })
                 
 
     const handleButton = (e) => {
