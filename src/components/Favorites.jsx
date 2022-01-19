@@ -8,7 +8,7 @@ function Favorites () {
         userProfile
     } = useContext(AppContext);
     return (
-        <>
+        <div className="favUserProfile">
             {tweets.filter((post) => post.likes && post.likes.find(( uidLike ) => userProfile.uid === uidLike)).map((fav) => {
                 return(
                     <TweetContainer 
@@ -25,7 +25,7 @@ function Favorites () {
                     />
                 )
             })}
-        </>
+        </div>
     );
 };
 

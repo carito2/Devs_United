@@ -40,7 +40,7 @@ function FeedPage() {
     const handleButtonPost = (e) => {
         e.preventDefault();
         firestore.collection("tweets").add(tweet);
-        setTweet({});
+        setTweet("");
         setCharacter(0);
     }
 
@@ -79,8 +79,6 @@ function FeedPage() {
                         className="inputTweet"
                         name="inputTweet" 
                         id="inputTweet" 
-                        cols="30" 
-                        rows="5" 
                         value={tweet.tweet ? tweet.tweet : ""} 
                         placeholder="What's happening?"  
                         onChange={handleChangeInputTweet} 

@@ -74,13 +74,15 @@ function TweetContainer({
             </Link>
             <div className="tweetBox">
                 <div className="headerBox">
-                    <h1 
-                        className="usernameTitle" 
-                        style={{backgroundColor: `${userProperty && userProperty.userColor}`}}
-                    >
-                        {userProperty && userProperty.userName}
-                    </h1>
-                    <p className="tweetDate">{` - ${dateConvert}`}</p>
+                    <div className="containerUserDate">
+                        <h1 
+                            className="usernameTitle" 
+                            style={{backgroundColor: `${userProperty && userProperty.userColor}`}}
+                        >
+                            {userProperty && userProperty.userName}
+                        </h1>
+                        <p className="tweetDate">{` - ${dateConvert}`}</p>
+                    </div>
                     {userUid === uid && 
                         <img 
                             src={iconTrash} 
@@ -89,6 +91,11 @@ function TweetContainer({
                             onClick={() => deleteTweet(id)} 
                         />}
                 </div>
+                <p 
+                    style={{color: `${userProperty && userProperty.userColor}`}}
+                >
+                    {userProperty && userProperty.email}
+                </p>
                 <p className="tweetContent">{tweet}</p>
                 <div className="likeBox">
                     <img 

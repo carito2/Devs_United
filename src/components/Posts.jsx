@@ -9,7 +9,7 @@ function Posts () {
     } = useContext(AppContext);
 
     return (
-        <>
+        <div className="postUserProfile">
             {tweets.filter((tweet) => tweet.uid === userProfile.uid).map((post) => {
                 return(
                     <TweetContainer 
@@ -26,7 +26,7 @@ function Posts () {
                     />
                 )
             })}
-        </>
+        </div>
     );
 }
 

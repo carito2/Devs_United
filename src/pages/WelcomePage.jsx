@@ -79,13 +79,13 @@ function WelcomePage() {
         }
     }
     return (
-
         <section className="welcomePage">
             <HeaderWelcome />
             {!isLoading 
                 ?
                     <main className="containerSignIn">
                         <h1>Welcome <span className="betaName">{user.displayName}!</span></h1>
+                        <p>{user.email}</p>
                         <input 
                             className="inputUsername" 
                             type="text" 

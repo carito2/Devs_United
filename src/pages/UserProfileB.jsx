@@ -21,23 +21,25 @@ function UserProfileB() {
     return (
         <section className="userProfile">
             <UserProfileInformation  userProperty={userProperty} />
-            { tweets.filter((tweet) => tweet.uid === userProperty.uid).map((post) => {
-                return (
-                    <TweetContainer 
-                        key={post.id}
-                        profilePicture={post.profilePicture}
-                        userName={post.username} 
-                        dateTweet={post.date}
-                        tweet={post.tweet}
-                        likes={post.likes}
-                        numLike={post.numLike}
-                        userUid={userProfile.uid}
-                        uid={post.uid}
-                        id={post.id}
-                    />
-                )
-            })
-            }
+            <article className="tweetsUserProfileB">
+                { tweets.filter((tweet) => tweet.uid === userProperty.uid).map((post) => {
+                    return (
+                        <TweetContainer 
+                            key={post.id}
+                            profilePicture={post.profilePicture}
+                            userName={post.username} 
+                            dateTweet={post.date}
+                            tweet={post.tweet}
+                            likes={post.likes}
+                            numLike={post.numLike}
+                            userUid={userProfile.uid}
+                            uid={post.uid}
+                            id={post.id}
+                        />
+                    )
+                })
+                }
+            </article>
             <Outlet />
         </section>
     )

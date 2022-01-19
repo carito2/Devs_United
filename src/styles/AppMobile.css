@@ -1,0 +1,132 @@
+@media screen and (max-width: 470px) {
+    h1{
+        font-size: 36px;
+        line-height: 36px;
+    }
+
+    p{
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    /* HeaderWelcome */
+    .welcomePage header.logoContainer {
+        align-items: center;
+        height: 50%;
+        justify-content: center;
+        padding: 0;
+        width: 100%;
+    }
+
+    .welcomePage .logoContainer .logoWelcome{
+        height: 100%;
+    }
+
+    /* FooterWelcome */
+    section.welcomePage main.containerSignIn .footerWelcomePage {
+        font-size: 14px;
+        line-height: 18px; 
+    }
+
+    /* SignUpPage */
+    section.welcomePage {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+        padding: 0 12%;
+    }
+
+    section.welcomePage main.containerSignIn{
+        display: flex;
+        height: 50%;
+        padding: 10% 0;
+        width: 100%;
+    }
+
+    section.welcomePage main.containerSignIn .boxLogin{
+        margin-bottom: 46px;
+        padding-right: 12%;
+    }
+
+    /* WelcomePage */
+    span.betaName {
+        font-size: 36px;
+        line-height: 36px;
+    }
+
+    section.welcomePage .containerSignIn input.inputUsername{
+        margin: 23px 0;
+        outline: none;
+        padding: 15px;
+    }
+
+    .welcomePage .containerSignIn .boxColors{
+        margin: 22px 0 37px 0;
+    }
+
+    .containerColor{
+        height: 42px;
+        width: 42px;
+    }
+
+    button.buttonWelcome {
+        margin-bottom: 54px;
+        padding: 17px 0;
+    }
+    
+    button.buttonWelcome p{
+        font-size: 20px;
+    }
+
+    /* FeedPage */
+
+    section.feedPage header.headerFeedPage {
+        padding: 9px 0;
+    }
+
+    section.feedPage form.formBox{
+        padding: 20px 4%;
+        width: 100%;
+    }
+
+    form.formBox input.inputTweet::placeholder{
+        color: #914D8B;
+        font-size: 16px;
+    }
+
+    p.characters{
+        font-size: 14px;
+    }
+
+    /* Tweet Container */
+
+    article.tweetContainer {
+        border-bottom: 2px solid #60265B;
+        display: flex;
+        margin: 22px 0;
+        padding: 0 16px;
+        width: 100%;
+    }
+
+    /* UserProfile */
+    section.userProfile header.headerUserProfile{
+        justify-content: space-between;
+        margin: 8px 16px;
+    }
+
+    div.returnBox h1.username{
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    article.userInformation h1.username{
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    section.userProfile nav.profileTabs{
+        padding: 0px 0px;
+    }
+}

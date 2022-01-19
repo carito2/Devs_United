@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import Posts from "./components/Posts";
 import Favorites from "./components/Favorites";
 import './styles/App.css';
+import "./styles/AppMobile.css"
 
 
 
