@@ -1,6 +1,5 @@
-import React, {useState, useContext, useEffect} from "react";
+import React, { useContext } from "react";
 import {AppContext} from "../contexts/AppContext";
-import {firestore} from "../firebase/firebase";
 import TweetContainer from "../components/TweetContainer";
 
 function Favorites () {
@@ -10,7 +9,6 @@ function Favorites () {
     } = useContext(AppContext);
     return (
         <>
-            <h1>Soy fav</h1>
             {tweets.filter((post) => post.likes && post.likes.find(( uidLike ) => userProfile.uid === uidLike)).map((fav) => {
                 return(
                     <TweetContainer 
@@ -24,7 +22,7 @@ function Favorites () {
                                 userUid={userProfile.uid}
                                 uid={fav.uid}
                                 id={fav.id}
-                            />
+                    />
                 )
             })}
         </>

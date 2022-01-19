@@ -1,17 +1,14 @@
-import React, {useContext} from "react";
-import {AppContext} from "../contexts/AppContext"
+import React, { useContext } from "react";
+import { Outlet, Link } from "react-router-dom";
+import { AppContext } from "../contexts/AppContext"
 import firebase from 'firebase/app';
-import {firestore} from "../firebase/firebase";
+import { firestore } from "../firebase/firebase";
 import logoLike from "../resources/images/logoLike.svg";
 import logoDislike from "../resources/images/logoDislike.svg";
 import iconTrash from "../resources/images/iconTrash.png";
-import { Outlet, useParams } from "react-router";
-import UserProfile from "../pages/UserProfile";
-import { Link } from "react-router-dom";
 
 function TweetContainer({ 
     profilePicture, 
-    userName, 
     dateTweet, 
     tweet, 
     numLike, 
@@ -19,17 +16,20 @@ function TweetContainer({
     uid, 
     userUid, 
     likes }) {
+
     const { usersProfilesList } = useContext(AppContext);
 
     const optionDate = {
         day: "numeric",
         month: "short"
     }
-
+    //Se cambia formato de fecha a dd mes (Ejemplo: 15 jun).
     let dateConvert = new Date(dateTweet).toLocaleDateString("es-CL", optionDate);
 
+    //Se traen a userProperty las propiedades de usuario desde lista de perfiles creados.
     let userProperty = usersProfilesList.filter((user) => user.uid === uid).shift();
     
+    //Se verifica si usuario le ha dado like a tweet.
     let userLike = likes && likes.includes(userUid);
 
     const updateLike = () => {
@@ -61,26 +61,47 @@ function TweetContainer({
     }
 
     return(
-        <div className="tweetContainer">
-            <Link to={userUid === uid ? "/userProfile/posts" : `/userProfileB/${uid}`}>
-                <img src={profilePicture} alt="Foto del perfil de usuario" className="profilePicture" />
+        <article className="tweetContainer">
+            <Link to={userUid === uid 
+                ? "/userProfile/posts" 
+                : `/userProfileB/${uid}`}
+            >
+                <img 
+                    src={profilePicture} 
+                    alt="Foto del perfil de usuario" 
+                    className="profilePicture" 
+                />
             </Link>
-
             <div className="tweetBox">
                 <div className="headerBox">
-                    <h1 className="usernameTitle" style={{backgroundColor: `${userProperty && userProperty.userColor}`}}>{userProperty && userProperty.userName}</h1>
+                    <h1 
+                        className="usernameTitle" 
+                        style={{backgroundColor: `${userProperty && userProperty.userColor}`}}
+                    >
+                        {userProperty && userProperty.userName}
+                    </h1>
                     <p className="tweetDate">{` - ${dateConvert}`}</p>
-                    {userUid === uid && <img src={iconTrash} className="iconTrash" alt="Icono de eliminar" onClick={() => deleteTweet(id)} />}
-                    
+                    {userUid === uid && 
+                        <img 
+                            src={iconTrash} 
+                            className="iconTrash" 
+                            alt="Icono de eliminar" 
+                            onClick={() => deleteTweet(id)} 
+                        />}
                 </div>
                 <p className="tweetContent">{tweet}</p>
                 <div className="likeBox">
-                    <img src={userLike ? logoLike : logoDislike} alt="Corazón de like" className="logoLike" onClick={updateLike} />
+                    <img 
+                        src={userLike ? logoLike : logoDislike} 
+                        alt="Corazón de like" 
+                        className="logoLike" 
+                        onClick={updateLike} 
+                    />
                     <p className="numberOfLikes">{numLike}</p>
                 </div>
             </div>
             <Outlet />
-        </div>
+        </article>
     )
 }
 

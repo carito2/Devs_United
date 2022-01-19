@@ -1,5 +1,4 @@
-import React, {useState, useContext, useEffect} from "react";
-import {firestore} from "../firebase/firebase";
+import React, { useContext } from "react";
 import {AppContext} from "../contexts/AppContext";
 import TweetContainer from "./TweetContainer";
 
@@ -11,7 +10,6 @@ function Posts () {
 
     return (
         <>
-            <h1>Esto es Post</h1>
             {tweets.filter((tweet) => tweet.uid === userProfile.uid).map((post) => {
                 return(
                     <TweetContainer 
@@ -25,7 +23,7 @@ function Posts () {
                                 userUid={userProfile.uid}
                                 uid={post.uid}
                                 id={post.id}
-                            />
+                    />
                 )
             })}
         </>

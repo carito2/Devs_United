@@ -71,7 +71,9 @@ export const AppProvider = ({children}) => {
                         querySnapshot.forEach((doc) => {
                             setUserProfile(doc.data());                    
                         })
+                        setLoading(false);
                     })
+                
             })
             return () => {   
                 unsubscribe(); 

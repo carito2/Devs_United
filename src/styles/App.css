@@ -229,13 +229,16 @@ form.formBox .progress {
 form.formBox button.postButton{
   background-color: #2F112D;
   border: none;
-  color: #150714;
   cursor: pointer;
+  height: 35px;
+  width: 102px;
+}
+
+form.formBox button.postButton P{
+  color: #150714;
   font-family: Silkscreen;
   font-weight: 700;
   font-size: 20px;
-  height: 35px;
-  width: 102px;
 }
 
 form.formBox div.countingBoxCharacters{
@@ -351,14 +354,17 @@ div.returnBox h1.username{
 header.headerUserProfile button.buttonLogout{
   background-color: #F50D5A;
   border: none;
-  color:  #250C23;
   cursor: pointer;
-  font-family: Silkscreen;
-  font-weight: 700;
-  font-size: 16px;
   height: 35px;
   line-height: 16px;
   padding: 9px 6px;
+}
+
+header.headerUserProfile button.buttonLogout p{
+  color:  #250C23;
+  font-family: Silkscreen;
+  font-weight: 700;
+  font-size: 16px;
   text-align: center;
 }
 
@@ -408,6 +414,11 @@ nav.profileTabs .tab{
   padding: 11px 0px;
   transition: 0.3s;
   width: 50%;
+}
+
+nav.profileTabs .tab.active{
+  background-color: #60265B;
+  color: #150714;
 }
 
 div.profileTabs button.tab:hover, div.profileTabs button.tab:active{

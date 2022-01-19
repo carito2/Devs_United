@@ -6,6 +6,7 @@ function BoxColors({handleChange}) {
     const [colorSelected, setColorSelected] = useState(null);
     const [colorsList, setColorsList] = useState(colors);
     
+    //Se crea función setSelectColor que se encarga de cambiar propiedad selected acorde a donde se hizo click en el evento.
     const setSelectColor = (e) => {
         let colorEvent = e.target.innerText;
 
@@ -36,7 +37,7 @@ return(
                     className={`containerColor ${colorSelected === color.hex && "borderSelected"}`}
                     name="userColor"
                     style={{backgroundColor: color.hex}}
-                    onClick={(e) => handleChange(color, setSelectColor, e)}
+                    onClick={(e) => handleChange(color, setSelectColor(e))}
                 >
                     {color.hex}
                 </div>
@@ -47,6 +48,3 @@ return(
 };
 
 export default BoxColors;
-
-// ${colorSelected.hex === color.hex && colorSelected.selected && "borderSelected"}
-// , border: `${colorSelected.hex === color.hex && colorSelected.selected && "2px solid #ffffff"}`

@@ -6,13 +6,15 @@ import BoxColors from "../components/BoxColors"
 import HeaderWelcome from "../components/HeaderWelcome";
 import FooterWelcome from "../components/FooterWelcome";
 import Button from "../components/Button";
+import Loading from "../components/Loading";
 
 function WelcomePage() {
     const {
         user,
         userProfile,
         setUserProfile,
-        usersProfilesList
+        usersProfilesList,
+        isLoading
     } = useContext(AppContext);
 
     let navigate = useNavigate();
@@ -21,13 +23,12 @@ function WelcomePage() {
     let userColor;
 
 
-    const handleChange = (e) => {
+    const handleChangeInputUsername = (e) => {
         userName = e.target.value;
     }
 
-    const handleColorChange = (color, setSelectColor, e) => {
+    const handleColorChange = (color) => {
         userColor = color.hex;
-        setSelectColor(e);
     }
 
     //Se crea variable para verificar si existe o no el usuario dentro de la lista de perfiles creados
@@ -78,20 +79,34 @@ function WelcomePage() {
         }
     }
     return (
+
         <section className="welcomePage">
             <HeaderWelcome />
-            <article className="containerSignIn">
-                <h1>Welcome <span className="betaName">{user.displayName}!</span></h1>
-                <input className="inputUsername" type="text" name="userName" placeholder="Type your username" onChange={handleChange}/>
-                <p>Select your favorite color</p>
-                <BoxColors handleChange={handleColorChange}/>
-                <Button 
-                    classNameBtn={"buttonWelcome"}
-                    onClick={handleButton}
-                    content={"Continue"}
-                />
-                <FooterWelcome />
-            </article>
+            {!isLoading 
+                ?
+                    <main className="containerSignIn">
+                        <h1>Welcome <span className="betaName">{user.displayName}!</span></h1>
+                        <input 
+                            className="inputUsername" 
+                            type="text" 
+                            name="userName" 
+                            placeholder="Type your username" 
+                            onChange={handleChangeInputUsername}
+                        />
+                        <p>Select your favorite color</p>
+                        <BoxColors 
+                            handleChange={handleColorChange}
+                        />
+                        <Button 
+                            classNameBtn={"buttonWelcome"}
+                            onClick={handleButton}
+                            content={"Continue"}
+                        />
+                        <FooterWelcome />
+                    </main>
+                : <Loading />
+            } 
+            
             <Outlet/>
         </section>
     )

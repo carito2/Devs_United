@@ -15,7 +15,7 @@ function SignUpPage() {
     return (
         <section className="welcomePage">
             <HeaderWelcome />
-            <article className="containerSignIn">
+            <main className="containerSignIn">
                 <h1>LOREM IPSUM DOLOR</h1>
                 <p className="paragraphWelcome">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
                 {/* <button className="boxLogin" onClick={handleButtonLogin}>
@@ -32,7 +32,7 @@ function SignUpPage() {
                     contentClassName={"buttonSignIn"}
                 />
                 <FooterWelcome />
-            </article>
+            </main>
             <Outlet/>
         </section>
     )
