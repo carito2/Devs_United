@@ -410,6 +410,11 @@ header.headerUserProfile button.buttonLogout{
   padding: 9px 6px;
 }
 
+header.headerUserProfile button.buttonLogout:hover{
+  height: 37px;
+  padding: 9px 6px;
+}
+
 header.headerUserProfile button.buttonLogout p{
   color:  #250C23;
   font-family: Silkscreen;
@@ -454,7 +459,6 @@ section.userProfile nav.profileTabs{
   display: flex;
   padding: 0px 29%;
   text-align: center;
-  transition: 2s;
 }
 
 nav.profileTabs .tab{
@@ -486,6 +490,7 @@ div.profileTabs button.tab:hover, div.profileTabs button.tab:active{
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: 5s;
 }
 
 /* Fav */
@@ -502,3 +507,15 @@ section.userProfile article.tweetsUserProfileB {
   align-items: center;
 }
 
+/* Error Message*/
+
+.formBox .inputContainer textarea.errorMessage{
+  border: 2px solid #F50D5A;
+}
+
+p.errorMessage {
+  color: #F50D5A;
+  font-size: 14px;
+  line-height: 14px;
+  margin: 5px 0;
+}

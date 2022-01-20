@@ -5,6 +5,7 @@ import {AppContext} from "../contexts/AppContext";
 import TweetContainer from "../components/TweetContainer";
 import Button from "../components/Button";
 import characterCounter from "../helpers/characterCounter";
+import {progressBar} from "../helpers/characterCounter";
 import logo from "../resources/images/logoSmallDevs.svg";
 import devsUnited from "../resources/images/devsUnited.svg";
 import Loading from "../components/Loading";
@@ -20,6 +21,7 @@ function FeedPage() {
     } = useContext(AppContext);
     
     const [character, setCharacter] = useState(0);
+    const [errorMessage, setErrorMessage] = useState(false);
     
     const handleChangeInputTweet = (e) => {
         e.preventDefault();
@@ -34,14 +36,21 @@ function FeedPage() {
             uid: userProfile.uid
         }
         setTweet(newTweet);
+        setErrorMessage(false);
         characterCounter(setCharacter);
     }
 
     const handleButtonPost = (e) => {
         e.preventDefault();
-        firestore.collection("tweets").add(tweet);
-        setTweet("");
-        setCharacter(0);
+        if(tweet.tweet ){
+            firestore.collection("tweets").add(tweet);
+            setTweet("");
+            setCharacter(0);
+            progressBar(1);
+        } else {
+            setErrorMessage(true)
+        }
+
     }
 
     return (
@@ -76,7 +85,7 @@ function FeedPage() {
                 />
                 <div className="inputContainer">
                     <textarea 
-                        className="inputTweet"
+                        className={`inputTweet ${errorMessage && "errorMessage"}`}
                         name="inputTweet" 
                         id="inputTweet" 
                         value={tweet.tweet ? tweet.tweet : ""} 
@@ -91,6 +100,8 @@ function FeedPage() {
                         <p className="characters">{character}</p>
                         <p className="characters maxCharacters">200 max.</p>
                     </div>
+                    {errorMessage && 
+                        <p className="errorMessage">Debes escribir un tweet!</p>}
                     <Button 
                         classNameBtn="postButton"
                         onClick={handleButtonPost}
