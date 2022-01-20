@@ -54,83 +54,85 @@ function FeedPage() {
     }
 
     return (
-        <section className="feedPage">
-            <header className="headerFeedPage">
-                <Link to="/userProfile/posts">
-                    <img 
-                        src={userProfile.profilePicture} 
-                        alt="Foto de perfil" 
-                        className="profilePicture" 
-                        style={{border: `2px solid ${userProfile.userColor}`}}
-                    />
-                </Link>
-                <Link to="/welcome">
-                    <img 
-                        src={logo} 
-                        alt="Logo Devs_United" 
-                        className="logoSmall"
-                    />
-                </Link>
-                <img 
-                    src={devsUnited} 
-                    alt="Título Devs_United" 
-                    className="titleDevsUnited"
-                />
-            </header>
-            <form className="formBox">
-                <img 
-                    className="profilePicture"
-                    src={userProfile.profilePicture} 
-                    alt="Foto de perfil" 
-                />
-                <div className="inputContainer">
-                    <textarea 
-                        className={`inputTweet ${errorMessage && "errorMessage"}`}
-                        name="inputTweet" 
-                        id="inputTweet" 
-                        value={tweet.tweet ? tweet.tweet : ""} 
-                        placeholder="What's happening?"  
-                        onChange={handleChangeInputTweet} 
-                        maxLength="200"
-                    />
-                    <div className="progressBar" id="progressBar">
-                        <div className="progress" id="progress"></div>
-                    </div>
-                    <div className="countingBoxCharacters">
-                        <p className="characters">{character}</p>
-                        <p className="characters maxCharacters">200 max.</p>
-                    </div>
-                    {errorMessage && 
-                        <p className="errorMessage">Debes escribir un tweet!</p>}
-                    <Button 
-                        classNameBtn="postButton"
-                        onClick={handleButtonPost}
-                        content="POST"
-                    />
-                </div>
-            </form>
-            {!loading 
-                ? (tweets.length > 0 
-                    ? (tweets.map((tweet) => {
-                        return (
-                            <TweetContainer 
-                                key={tweet.id}
-                                profilePicture={tweet.profilePicture}
-                                dateTweet={tweet.date}
-                                tweet={tweet.tweet}
-                                likes={tweet.likes}
-                                numLike={tweet.numLike}
-                                userUid={userProfile.uid}
-                                id={tweet.id}
-                                uid={tweet.uid}
+        <>
+            {!loading ? (
+                <section className="feedPage">
+                    <header className="headerFeedPage">
+                        <Link to="/userProfile/posts">
+                            <img 
+                                src={userProfile.profilePicture} 
+                                alt="Foto de perfil" 
+                                className="profilePicture" 
+                                style={{border: `2px solid ${userProfile.userColor}`}}
                             />
-                        )}) 
-                    ) 
-                    : (<h1>No existe ningún tweet!</h1>)
-                ) 
-                : (<Loading />)}
+                        </Link>
+                        <Link to="/welcome">
+                            <img 
+                                src={logo} 
+                                alt="Logo Devs_United" 
+                                className="logoSmall"
+                            />
+                        </Link>
+                        <img 
+                            src={devsUnited} 
+                            alt="Título Devs_United" 
+                            className="titleDevsUnited"
+                        />
+                    </header>
+                    <form className="formBox">
+                        <img 
+                            className="profilePicture"
+                            src={userProfile.profilePicture} 
+                            alt="Foto de perfil" 
+                        />
+                        <div className="inputContainer">
+                            <textarea 
+                                className={`inputTweet ${errorMessage && "errorMessage"}`}
+                                name="inputTweet" 
+                                id="inputTweet" 
+                                value={tweet.tweet ? tweet.tweet : ""} 
+                                placeholder="What's happening?"  
+                                onChange={handleChangeInputTweet} 
+                                maxLength="200"
+                            />
+                            <div className="progressBar" id="progressBar">
+                                <div className="progress" id="progress"></div>
+                            </div>
+                            <div className="countingBoxCharacters">
+                                <p className="characters">{character}</p>
+                                <p className="characters maxCharacters">200 max.</p>
+                            </div>
+                            {errorMessage && 
+                                <p className="errorMessage">Debes escribir un tweet!</p>}
+                            <Button 
+                                classNameBtn="postButton"
+                                onClick={handleButtonPost}
+                                content="POST"
+                            />
+                        </div>
+                    </form>
+                    {tweets.length > 0 
+                        ? (tweets.map((tweet) => {
+                                return (
+                                    <TweetContainer 
+                                        key={tweet.id}
+                                        profilePicture={tweet.profilePicture}
+                                        dateTweet={tweet.date}
+                                        tweet={tweet.tweet}
+                                        likes={tweet.likes}
+                                        numLike={tweet.numLike}
+                                        userUid={userProfile.uid}
+                                        id={tweet.id}
+                                        uid={tweet.uid}
+                                    />
+                                )}) 
+                            ) 
+                        : (<h1>No existe ningún tweet!</h1>)}
+                </section>
+                ) : (<Loading />)
+            }
             <Outlet/>
-        </section>
+        </>
     )
 }
 

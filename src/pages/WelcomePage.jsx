@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { AppContext } from "../contexts/AppContext";
 import { firestore } from "../firebase/firebase";
@@ -14,7 +14,7 @@ function WelcomePage() {
         userProfile,
         setUserProfile,
         usersProfilesList,
-        isLoading
+        Loading
     } = useContext(AppContext);
 
     let navigate = useNavigate();
@@ -76,16 +76,16 @@ function WelcomePage() {
                 setUserProfile(newUserProfile);
                 navigate("/feed");
             }
-        }
+        } 
     }
     return (
         <section className="welcomePage">
             <HeaderWelcome />
-            {!isLoading 
+            {!Loading 
                 ?
                     <main className="containerSignIn">
-                        <h1>Welcome <span className="betaName">{user.displayName}!</span></h1>
-                        <p>{user.email}</p>
+                        <h1>Welcome <span className="betaName">{user && user.displayName}!</span></h1>
+                        <p>{user && user.email}</p>
                         <input 
                             className="inputUsername" 
                             type="text" 
