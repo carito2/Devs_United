@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { AppContext } from "../contexts/AppContext";
 import { firestore } from "../firebase/firebase";
@@ -6,7 +6,6 @@ import BoxColors from "../components/BoxColors"
 import HeaderWelcome from "../components/HeaderWelcome";
 import FooterWelcome from "../components/FooterWelcome";
 import Button from "../components/Button";
-import Loading from "../components/Loading";
 
 function WelcomePage() {
     const {
@@ -33,8 +32,8 @@ function WelcomePage() {
 
     //Se crea variable para verificar si existe o no el usuario dentro de la lista de perfiles creados
     let verifiedUserProfile = usersProfilesList.find((userProfile) => userProfile.uid === user.uid) 
-        ? "true" 
-        : "false";
+        ? true 
+        : false;
 
     const handleButton = (e) => {
         e.preventDefault();

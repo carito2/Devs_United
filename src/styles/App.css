@@ -541,3 +541,25 @@ section.loading {
   justify-content: center;
   width: 100vw;
 }
+
+/* NotFound */
+section.notFoundPage {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  text-align: center;
+  width: 100vw;
+}
+
+.containerLinkHome {
+  margin-top: 100px;
+}
+
+img.logoHome {
+  height: 70%;
+  margin-bottom: 100px;
+  width: 70%;
+}
+

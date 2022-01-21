@@ -18,10 +18,6 @@ function SignUpPage() {
             <main className="containerSignIn">
                 <h1>LOREM IPSUM DOLOR</h1>
                 <p className="paragraphWelcome">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                {/* <button className="boxLogin" onClick={handleButtonLogin}>
-                    <img className="logoGoogle" src={logoGoogle} alt="Logo de Google" />
-                    <span className="buttonSignIn">Sign in with Google</span>
-                </button> */}
                 <Button 
                     classNameBtn={"boxLogin"}
                     onClick={handleButtonLogin}

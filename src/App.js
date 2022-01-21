@@ -1,5 +1,6 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React, {useContext} from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { AppContext } from "./contexts/AppContext";
 import Home from "./pages/Home";
 import SignUpPage from './pages/SignUpPage';
 import WelcomePage from './pages/WelcomePage';
@@ -14,16 +15,20 @@ import "./styles/AppMobile.css"
 
 
 
+
+
 function App() {
 
+  const{ user } = useContext(AppContext);
+  
   return (
     <div className="App">
       <Routes>
           <Route path="/">
-            <Route index element={<Home />} />
-            <Route path="signUp" element={<SignUpPage />} />
-            <Route path="welcome" element={<WelcomePage />} />
-            <Route path="feed" element={<FeedPage />} />
+            <Route index element={<Home />}/> 
+            <Route path="signUp" element={!user ? <SignUpPage /> : <Navigate replace to="/" />} />
+            <Route path="welcome" element={user  ? <WelcomePage /> : <Navigate replace to="/" /> } />
+            <Route path="feed" element={user ? <FeedPage /> : <Navigate replace to="/" /> }/>
             <Route path="userProfile" element={<UserProfile />}>
               <Route path="posts" element={<Posts />} />
               <Route path="favorites" element={<Favorites />} />
