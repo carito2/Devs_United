@@ -13,31 +13,26 @@ import Favorites from "./components/Favorites";
 import './styles/App.css';
 import "./styles/AppMobile.css"
 
-
-
-
-
 function App() {
 
   const{ user } = useContext(AppContext);
-  
+
   return (
     <div className="App">
-      <Routes>
-          <Route path="/">
-            <Route index element={<Home />}/> 
-            <Route path="signUp" element={!user ? <SignUpPage /> : <Navigate replace to="/" />} />
-            <Route path="welcome" element={user  ? <WelcomePage /> : <Navigate replace to="/" /> } />
-            <Route path="feed" element={user ? <FeedPage /> : <Navigate replace to="/" /> }/>
-            <Route path="userProfile" element={<UserProfile />}>
-              <Route path="posts" element={<Posts />} />
-              <Route path="favorites" element={<Favorites />} />
+          <Routes>
+            <Route path="/" >
+              <Route index element={<Home />}/> 
+              <Route path="signUp" element={!user ? <SignUpPage /> : <Navigate replace to="/" />} />
+              <Route path="welcome" element={user  ? <WelcomePage /> : <Navigate replace to="/" />} />
+              <Route path="feed" element={user ? <FeedPage /> : <Navigate replace to="/" />} />
+              <Route path="userProfile" element={user ? <UserProfile /> : <Navigate replace to="/" />}>
+                <Route path="posts" element={<Posts />} />
+                <Route path="favorites" element={<Favorites />} />
+              </Route>
+              <Route path="userProfileB/:uid" element={user ? <UserProfileB /> :  <Navigate replace to="/" />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
-            <Route path="userProfileB/:uid" element={<UserProfileB />} />
-            <Route path="*" element={<NotFound />} />
-            
-          </Route>
-      </Routes>
+          </Routes>
     </div>
   );
 }

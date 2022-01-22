@@ -3,13 +3,12 @@ import {Outlet, Link} from "react-router-dom";
 import {firestore} from "../firebase/firebase";
 import {AppContext} from "../contexts/AppContext";
 import TweetContainer from "../components/TweetContainer";
+import Loading from "../components/Loading";
 import Button from "../components/Button";
 import characterCounter from "../helpers/characterCounter";
 import {progressBar} from "../helpers/characterCounter";
 import logo from "../resources/images/logoSmallDevs.svg";
 import devsUnited from "../resources/images/devsUnited.svg";
-import Loading from "../components/Loading";
-
 
 function FeedPage() {
     const {
@@ -55,7 +54,7 @@ function FeedPage() {
 
     return (
         <>
-            {!loading ? (
+            {loading === false ? (
                 <section className="feedPage">
                     <header className="headerFeedPage">
                         <Link to="/userProfile/posts">

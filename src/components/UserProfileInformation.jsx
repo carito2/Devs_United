@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../firebase/firebase";
 import Button from "../components/Button";
 import back from "../resources/images/back.svg";
 import logoutIcon from "../resources/images/logout.svg";
+import { AppContext } from "../contexts/AppContext";
 
 function UserProfileInformation ({ userProperty }) {
 
     let navigate = useNavigate();
+
+    const {setUserProfile} = useContext(AppContext);
 
     const logoutHandler = () => {
         logout();

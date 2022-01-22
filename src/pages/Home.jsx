@@ -1,27 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {Navigate} from "react-router-dom";
+import Loading from "../components/Loading";
 import { AppContext } from "../contexts/AppContext"
 import FeedPage from "./FeedPage";
 import SignUpPage from "./SignUpPage";
 import WelcomePage from "./WelcomePage";
+import {firestore, firebase} from "../firebase/firebase";
 
 function Home () {
     const {
         user,
-        userProfile
+        userProfile,
     } = useContext(AppContext);
-
-    //Se crea variable que retorna si userProfile se recibe vacío o no.
-    let verifiedUserProfile = Object.keys(userProfile).length > 0 ? true : false;
+    console.log("user");
     console.log(user);
-    console.log(userProfile);
-    console.log(verifiedUserProfile);
+
+    const render = () => {
+        if(user && userProfile){
+            if(userProfile.verifiedUserProfile === false){
+                return <Navigate replace to="/welcome" />;
+            } else if(userProfile.verifiedUserProfile === true) {
+                return <Navigate replace to="/feed" />;
+            }
+        } else {
+            return <Navigate to="/signUp" />;
+        }
+    }
+
     return (
         <>
-            {user  ? (verifiedUserProfile !== false 
-                        ? <Navigate  replace to="/feed" />
-                        : <Navigate replace to="/welcome" />)
-                    : (<Navigate to="/signUp" />) }
+            {render()}
         </>
     )
 }
