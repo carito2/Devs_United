@@ -84,9 +84,8 @@ export const AppProvider = ({children}) => {
                         }
                     })
                     setUsersProfilesList(users);
-                    setLoading(false); 
-                    
                 }); 
+                setLoading(false);
             return () => {   
                 unsubscribe(); 
                 unsubscribeUsers();

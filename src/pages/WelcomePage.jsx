@@ -80,7 +80,7 @@ function WelcomePage() {
     return (
         <section className="welcomePage">
             <HeaderWelcome />
-            {!Loading 
+            {!Loading
                 ?
                     <main className="containerSignIn">
                         <h1>Welcome <span className="betaName">{user && user.displayName}!</span></h1>
