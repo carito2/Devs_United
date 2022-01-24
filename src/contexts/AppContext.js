@@ -21,7 +21,6 @@ export const AppProvider = ({children}) => {
 
     //Se realiza llamada a firebase para traernos data y autenticación.
     useEffect(() => {
-        setLoading(true);
         auth.onAuthStateChanged((userAuth) => {
             setUser(userAuth);
             // Si se recibe usuario atenticado(userAuth), iremos a firebase para trernos la data de usuario logueado.
@@ -42,12 +41,11 @@ export const AppProvider = ({children}) => {
                     }
                 })
         })
-    });
+    }, [userProfile]);
 
     useEffect(() => {
         if(user){
             setLoading(true);
-            console.log("voyacá");
             const unsubscribe = firestore
                 .collection("tweets")
                 .onSnapshot((snapshot) => {

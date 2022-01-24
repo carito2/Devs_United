@@ -50,7 +50,6 @@ function FeedPage() {
             setErrorMessage(true)
         }
     }
-    console.log(loading);
     return (
         <>
             {loading 

@@ -7,13 +7,9 @@ function Home () {
     const {
         user,
         userProfile,
-        loading
     } = useContext(AppContext);
 
     const render = () => {
-        if(loading){
-            return <Loading />
-        }
         if(user && userProfile){
             if(userProfile.verifiedUserProfile === false){
                 return <Navigate replace to="/welcome" />;
@@ -27,6 +23,7 @@ function Home () {
 
     return (
         <>
+            <Loading />
             {render()}
         </>
     )

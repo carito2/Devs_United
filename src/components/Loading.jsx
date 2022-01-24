@@ -1,7 +1,6 @@
 import { Outlet } from "react-router";
 
 function Loading () {
-    console.log("aqui estoy en Loading");
     return(
         <section className="loading">
             <iframe 
