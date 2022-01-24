@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import { AppContext } from "../contexts/AppContext"
+import { AppContext } from "../contexts/AppContext";
+import Loading from "../components/Loading";
 
 function Home () {
     const {
@@ -11,12 +12,10 @@ function Home () {
 
     const render = () => {
         if(user && userProfile){
-            if(loading){
-                if(userProfile.verifiedUserProfile === false){
-                    return <Navigate replace to="/welcome" />;
-                } else if(userProfile.verifiedUserProfile === true) {
-                    return <Navigate replace to="/feed" />;
-                }
+            if(userProfile.verifiedUserProfile === false){
+                return <Navigate replace to="/welcome" />;
+            } else if(userProfile.verifiedUserProfile === true) {
+                return <Navigate replace to="/feed" />;
             }
         } else {
             return <Navigate to="/signUp" />;
@@ -25,7 +24,10 @@ function Home () {
 
     return (
         <>
-            {render()}
+            {loading
+                ? <Loading />
+                : render()
+            }
         </>
     )
 }
