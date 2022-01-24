@@ -11,7 +11,7 @@ function UserProfileInformation ({ userProperty }) {
 
     const logoutHandler = () => {
         logout();
-        navigate("/");
+        navigate("/signUp");
     }
     
     return(
