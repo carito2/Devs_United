@@ -47,6 +47,7 @@ export const AppProvider = ({children}) => {
     useEffect(() => {
         if(user){
             setLoading(true);
+            console.log("voyacá");
             const unsubscribe = firestore
                 .collection("tweets")
                 .onSnapshot((snapshot) => {
