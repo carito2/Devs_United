@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from "react";
-import {firestore, auth, provider} from "../firebase/firebase";
+import {firestore, auth} from "../firebase/firebase";
 import sortByDates from "../helpers/sortByDates";
 
 export const AppContext = createContext();
@@ -42,7 +42,7 @@ export const AppProvider = ({children}) => {
                     }
                 })
         })
-    }, []);
+    }, [userProfile]);
 
     useEffect(() => {
         if(user){

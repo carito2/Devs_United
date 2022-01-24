@@ -1,6 +1,5 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
-import Button from "../components/Button";
 import logoDevsUnited from "../resources/images/logoDevsUnited.svg";
 
 function NotFound() {
@@ -8,7 +7,7 @@ function NotFound() {
         <section className="notFoundPage">
             <h1>NOT FOUND: error 404</h1>
             <article className="containerLinkHome">
-                <img src={logoDevsUnited} className="logoHome"/>
+                <img src={logoDevsUnited} className="logoHome" alt="logo Devs_United"/>
                 <Link to="/">
                     <p>Ir a Devs_United</p>
                 </Link>

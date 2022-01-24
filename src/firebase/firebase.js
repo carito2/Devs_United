@@ -1,8 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import "firebase/auth";
-import { useContext } from 'react';
-import { AppContext } from '../contexts/AppContext';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBC4rHYLGgyypmW9V4-5Tz_HiwCAYKvv08",

@@ -5,6 +5,7 @@ function Loading () {
     return(
         <section className="loading">
             <iframe 
+                title="loading gif"
                 src="https://giphy.com/embed/grNkIEN4dkiMXFLIE9" 
                 width="480" 
                 height="198" 
