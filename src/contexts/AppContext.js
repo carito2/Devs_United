@@ -42,7 +42,7 @@ export const AppProvider = ({children}) => {
                     }
                 })
         })
-    }, [userProfile]);
+    }, []);
 
     useEffect(() => {
         if(user){
