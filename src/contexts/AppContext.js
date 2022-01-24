@@ -92,8 +92,6 @@ export const AppProvider = ({children}) => {
         }   
     },[user]);
 
-    console.log(loading);
-
     return (
         <AppContext.Provider value={{
             tweet, 

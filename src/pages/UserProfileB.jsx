@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import {Outlet, useParams} from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import { AppContext } from "../contexts/AppContext";
 import TweetContainer from "../components/TweetContainer";
 import UserProfileInformation from "../components/UserProfileInformation";
@@ -7,7 +7,7 @@ import Loading from "../components/Loading";
 
 function UserProfileB() {
 
-    const {uid} = useParams();
+    const { uid } = useParams();
 
     const {
         userProfile, 

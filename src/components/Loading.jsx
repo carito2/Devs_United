@@ -1,5 +1,4 @@
 function Loading () {
-    console.log("entre loading");
     return(
         <section className="loading">
             <iframe 
