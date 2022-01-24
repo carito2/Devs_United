@@ -49,13 +49,13 @@ function FeedPage() {
         } else {
             setErrorMessage(true)
         }
-
     }
 
     return (
         <>
-            {loading === false ? (
-                <section className="feedPage">
+            {loading 
+                ? (<Loading />)
+                : (<section className="feedPage">
                     <header className="headerFeedPage">
                         <Link to="/userProfile/posts">
                             <img 
@@ -127,8 +127,7 @@ function FeedPage() {
                                 )}) 
                             ) 
                         : (<h1>No existe ningún tweet!</h1>)}
-                </section>
-                ) : (<Loading />)
+                </section>) 
             }
             <Outlet/>
         </>

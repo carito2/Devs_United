@@ -35,19 +35,19 @@
         flex-direction: column;
         height: 100vh;
         justify-content: center;
-        padding: 0 12%;
+        padding: 0 10%;
     }
 
     section.welcomePage main.containerSignIn{
         display: flex;
         height: 50%;
-        padding: 10% 0;
+        padding: 0;
         width: 100%;
     }
 
     section.welcomePage main.containerSignIn .boxLogin{
-        margin-bottom: 46px;
-        padding-right: 12%;
+        margin-bottom: 40px;
+        padding-right: 10%;
     }
 
     /* WelcomePage */
@@ -56,14 +56,21 @@
         line-height: 36px;
     }
 
-    section.welcomePage .containerSignIn input.inputUsername{
+    section.welcomePage main.containerWelcome{
+        display: flex;
+        height: 50%;
+        padding: 0;
+        width: 100%;
+    }
+
+    section.welcomePage .containerWelcome input.inputUsername{
         margin: 23px 0;
         outline: none;
         padding: 15px;
     }
 
-    .welcomePage .containerSignIn .boxColors{
-        margin: 22px 0 37px 0;
+    .welcomePage .containerWelcome .boxColors{
+        margin: 15px 0 25px 0;
     }
 
     .containerColor{
@@ -72,7 +79,7 @@
     }
 
     button.buttonWelcome {
-        margin-bottom: 54px;
+        margin-bottom: 21px;
         padding: 17px 0;
     }
     

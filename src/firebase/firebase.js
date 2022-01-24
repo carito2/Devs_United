@@ -1,6 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import "firebase/auth";
+import { useContext } from 'react';
+import { AppContext } from '../contexts/AppContext';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBC4rHYLGgyypmW9V4-5Tz_HiwCAYKvv08",
@@ -21,7 +23,9 @@ export const auth = firebase.auth();
 //El provedor de auntenticación
 export const provider = new firebase.auth.GoogleAuthProvider();
 //La utilidad para hacer login con el pop-up
-export const loginWithGoogle = () => auth.signInWithPopup(provider);
+export const loginWithGoogle = () => {
+    auth.signInWithPopup(provider)
+};
 //La utilidad para hacer logout
 export const logout = () => auth.signOut();
 

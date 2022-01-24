@@ -80,9 +80,10 @@ function WelcomePage() {
     return (
         <section className="welcomePage">
             <HeaderWelcome />
-            {!Loading
-                ?
-                    <main className="containerSignIn">
+            {Loading 
+                ? (<Loading />)
+                :
+                    <main className="containerWelcome">
                         <h1>Welcome <span className="betaName">{user && user.displayName}!</span></h1>
                         <p>{user && user.email}</p>
                         <input 
@@ -103,9 +104,7 @@ function WelcomePage() {
                         />
                         <FooterWelcome />
                     </main>
-                : <Loading />
             } 
-            
             <Outlet/>
         </section>
     )

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from "react";
-import {firestore, auth} from "../firebase/firebase";
+import {firestore, auth, provider} from "../firebase/firebase";
 import sortByDates from "../helpers/sortByDates";
 
 export const AppContext = createContext();
@@ -18,7 +18,7 @@ export const AppProvider = ({children}) => {
     const [userProfile, setUserProfile] = useState([]);
     const [usersProfilesList, setUsersProfilesList] = useState([]);
     const [loading, setLoading] = useState(true);
-    
+
     //Se realiza llamada a firebase para traernos data y autenticación.
     useEffect(() => {
         setLoading(true);
@@ -34,14 +34,13 @@ export const AppProvider = ({children}) => {
                         docAux = doc.data();
                         let verifiedUserProfile = Object.keys(docAux).length > 0 ? true : false;
                         docAux.verifiedUserProfile = verifiedUserProfile;
-                        setUserProfile(docAux);                 
+                        setUserProfile(docAux);  
                     })
                     if (docAux.length === 0){
                         userProfile.verifiedUserProfile = false;
                         setUserProfile(userProfile);
                     }
                 })
-                setLoading(false);
         })
     }, []);
 
@@ -84,14 +83,16 @@ export const AppProvider = ({children}) => {
                         }
                     })
                     setUsersProfilesList(users);
+                    setLoading(false);
                 }); 
-                setLoading(false);
             return () => {   
                 unsubscribe(); 
                 unsubscribeUsers();
             }    
         }   
     },[user]);
+
+    console.log(loading);
 
     return (
         <AppContext.Provider value={{
@@ -105,7 +106,7 @@ export const AppProvider = ({children}) => {
             setTweets, 
             setUser,
             setUserProfile,
-            setLoading
+            setLoading,
         }}>
             {children}
         </AppContext.Provider>

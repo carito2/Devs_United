@@ -16,7 +16,8 @@ function SignUpPage() {
         <section className="welcomePage">
             <HeaderWelcome />
             <main className="containerSignIn">
-                <h1>LOREM IPSUM DOLOR</h1>
+                <h1>LOREM</h1>
+                <h1>IPSUM DOLOR</h1>
                 <p className="paragraphWelcome">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
                 <Button 
                     classNameBtn={"boxLogin"}
