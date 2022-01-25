@@ -30,15 +30,10 @@ function WelcomePage() {
         userColor = color.hex;
     }
 
-    //Se crea variable para verificar si existe o no el usuario dentro de la lista de perfiles creados
-    let verifiedUserProfile = usersProfilesList.find((userProfile) => userProfile.uid === user.uid) 
-        ? true 
-        : false;
-
     const handleButton = (e) => {
         e.preventDefault();
         if(userName && userColor) {
-            if(verifiedUserProfile){
+            if(userProfile.verifiedUserProfile){
                 firestore.collection("usersProfile").where("uid", "==", userProfile.uid)
                 .get()
                 .then((querySnapshot) => {
