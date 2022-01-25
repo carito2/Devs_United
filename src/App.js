@@ -21,7 +21,7 @@ function App() {
     <div className="App">
           <Routes>
             <Route path="/" >
-              <Route index element={<Home />}/> 
+              <Route exact path="/" element={<Home />}/> 
               <Route path="signUp" element={user ? <Navigate replace to="/" /> : <SignUpPage /> } />
               <Route path="welcome" element={user  ? <WelcomePage /> : <Navigate replace to="/" />} />
               <Route path="feed" element={user ? <FeedPage /> : <Navigate replace to="/" />} />
