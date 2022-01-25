@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { AppContext } from "../contexts/AppContext";
 import { firestore } from "../firebase/firebase";
@@ -15,18 +15,18 @@ function WelcomePage() {
         Loading
     } = useContext(AppContext);
 
+    const [userColor, setUserColor] = useState({});
+    const [userName, setUserName] = useState({});
+
     let navigate = useNavigate();
 
-    let userName;
-    let userColor;
-
-
     const handleChangeInputUsername = (e) => {
-        userName = e.target.value;
+        e.preventDefault();
+        setUserName(e.target.value);
     }
 
     const handleColorChange = (color) => {
-        userColor = color.hex;
+        setUserColor(color.hex);
     }
 
     const handleButton = (e) => {
@@ -69,7 +69,8 @@ function WelcomePage() {
                 setUserProfile(newUserProfile);
                 navigate("/feed");
             }
-        } 
+        }
+
     }
     return (
         <section className="welcomePage">
@@ -88,7 +89,7 @@ function WelcomePage() {
                             onChange={handleChangeInputUsername}
                         />
                         <p>Select your favorite color</p>
-                        <BoxColors 
+                        <BoxColors  
                             handleChange={handleColorChange}
                         />
                         <Button 
