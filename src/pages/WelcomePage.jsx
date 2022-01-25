@@ -12,7 +12,6 @@ function WelcomePage() {
         user,
         userProfile,
         setUserProfile,
-        usersProfilesList,
         Loading
     } = useContext(AppContext);
 
