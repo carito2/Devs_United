@@ -3,12 +3,13 @@ import 'firebase/firestore';
 import "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBC4rHYLGgyypmW9V4-5Tz_HiwCAYKvv08",
-    authDomain: "tweets-project-295a5.firebaseapp.com",
-    projectId: "tweets-project-295a5",
-    storageBucket: "tweets-project-295a5.appspot.com",
-    messagingSenderId: "710649332419",
-    appId: "1:710649332419:web:81b51ff937c075ff4b9876"
+    apiKey: "AIzaSyDs0hfI6mVMhFYEDsHT99H2khOMAse8yrU",
+    authDomain: "devs-united-carolinamunoz.firebaseapp.com",
+    projectId: "devs-united-carolinamunoz",
+    storageBucket: "devs-united-carolinamunoz.appspot.com",
+    messagingSenderId: "196949339832",
+    appId: "1:196949339832:web:c3c389a39bd603cb910e4d",
+    measurementId: "G-0NYQ78RL33"
 };
 
 // Inicializa Firebase
