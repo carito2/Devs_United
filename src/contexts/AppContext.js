@@ -23,25 +23,27 @@ export const AppProvider = ({children}) => {
     useEffect(() => {
         auth.onAuthStateChanged((userAuth) => {
             setUser(userAuth);
-            // Si se recibe usuario atenticado(userAuth), iremos a firebase para trernos la data de usuario logueado.
-            userAuth && firestore
-                .collection("usersProfile").where("uid", "==", userAuth.uid)
-                .get()
-                .then((querySnapshot) => {
-                    let docAux=[];
-                    querySnapshot.forEach((doc) => {
-                        docAux = doc.data();
-                        let verifiedUserProfile = Object.keys(docAux).length > 0 ? true : false;
-                        docAux.verifiedUserProfile = verifiedUserProfile;
-                        setUserProfile(docAux);  
+            // Si se recibe usuario atenticado, iremos a firebase para trernos la data de usuario logueado.
+            if(user) {
+                firestore
+                    .collection("usersProfile").where("uid", "==", userAuth.uid)
+                    .get()
+                    .then((querySnapshot) => {
+                        let docAux=[];
+                        querySnapshot.forEach((doc) => {
+                            docAux = doc.data();
+                            let verifiedUserProfile = Object.keys(docAux).length > 0 ? true : false;
+                            docAux.verifiedUserProfile = verifiedUserProfile;
+                            setUserProfile(docAux);  
+                        })
+                        if (docAux.length === 0){
+                            userProfile.verifiedUserProfile = false;
+                            setUserProfile(userProfile);
+                        }
                     })
-                    if (docAux.length === 0){
-                        userProfile.verifiedUserProfile = false;
-                        setUserProfile(userProfile);
-                    }
-                })
+            }
         })
-    }, []);
+    }, [user]);
 
     useEffect(() => {
         if(user){
