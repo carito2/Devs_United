@@ -14,3 +14,10 @@ Aplicación web creada para la entrega de último proyecto y finalización de cu
 
 El hosting de la aplicación se realiza mediante misma plataforma de firebase, disponible en la siguiente URL pública.
 https://devs-united-carolinamunoz.web.app/
+### Dependencias
+
+Las dependencias instaladas para la realización de este proyecto fueron:
+- "firebase": "^8.4.3"
+- "react": "^17.0.2"
+- "react-dom": "^17.0.2"
+- "react-router-dom": "^6.2.1"
