@@ -15,35 +15,37 @@ export const AppProvider = ({children}) => {
         uid: "",
     });
     const [user, setUser] = useState(null);
-    const [userProfile, setUserProfile] = useState([]);
+    const [userProfile, setUserProfile] = useState({});
     const [usersProfilesList, setUsersProfilesList] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [loadingAuth, setLoadingAuth] = useState(true);
 
     //Se realiza llamada a firebase para traernos data y autenticación.
     useEffect(() => {
         auth.onAuthStateChanged((userAuth) => {
             setUser(userAuth);
-            // Si se recibe usuario atenticado, iremos a firebase para trernos la data de usuario logueado.
+            // Si se recibe usuario atenticado, iremos a firebase para trernos la data de usuario logueado para verificar que exista.
             if(user) {
                 firestore
                     .collection("usersProfile").where("uid", "==", userAuth.uid)
                     .get()
                     .then((querySnapshot) => {
-                        let docAux=[];
-                        querySnapshot.forEach((doc) => {
-                            docAux = doc.data();
-                            let verifiedUserProfile = Object.keys(docAux).length > 0 ? true : false;
-                            docAux.verifiedUserProfile = verifiedUserProfile;
-                            setUserProfile(docAux);  
-                        })
-                        if (docAux.length === 0){
-                            userProfile.verifiedUserProfile = false;
-                            setUserProfile(userProfile);
+                        if(querySnapshot.empty === true) {
+                            setUserProfile({
+                                verifiedUserProfile: false
+                            });
+                        } else {
+                            querySnapshot.forEach((doc) => {
+                                setUserProfile({
+                                    ...doc.data(),
+                                    verifiedUserProfile: true
+                                });
+                            })
                         }
-                    })
-            }
+                    }) 
+            } 
         })
-    }, [user]);
+    }, [user, setUserProfile]);
 
     useEffect(() => {
         if(user){
@@ -101,6 +103,7 @@ export const AppProvider = ({children}) => {
             userProfile,
             usersProfilesList,
             loading,
+            loadingAuth,
             setTweet, 
             setTweets, 
             setUser,

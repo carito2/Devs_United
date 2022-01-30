@@ -1,13 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Navigate } from "react-router-dom";
-import { AppContext } from "../contexts/AppContext";
 import Loading from "../components/Loading";
 
-function Home () {
-    const {
-        user,
-        userProfile,
-    } = useContext(AppContext);
+function Home ({user, userProfile}) {
 
     const render = () => {
         if(user && userProfile){

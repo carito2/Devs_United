@@ -10,12 +10,12 @@ function UserProfileInformation ({ userProperty }) {
 
     const { setUser, setUserProfile } = useContext(AppContext);
     let navigate = useNavigate();
-
+    
     const logoutHandler = () => {
         logout();
         setUser(null);
-        setUserProfile([]);
-        navigate("/signUp");
+        setUserProfile({});
+        navigate("/");
     }
     
     return(

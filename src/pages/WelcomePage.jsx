@@ -32,7 +32,7 @@ function WelcomePage() {
     const handleButton = (e) => {
         e.preventDefault();
         if(userName && userColor) {
-            if(userProfile.verifiedUserProfile){
+            if(userProfile.verifiedUserProfile === true){
                 firestore.collection("usersProfile").where("uid", "==", userProfile.uid)
                 .get()
                 .then((querySnapshot) => {

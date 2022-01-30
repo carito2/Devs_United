@@ -15,13 +15,13 @@ import "./styles/AppMobile.css"
 
 function App() {
 
-  const{ user } = useContext(AppContext);
-
+  const{ user, userProfile } = useContext(AppContext);
+  
   return (
     <div className="App">
           <Routes>
             <Route path="/" >
-              <Route exact path="/" element={<Home />}/> 
+              <Route exact path="/" element={<Home user={user} userProfile={userProfile} />}/> 
               <Route path="signUp" element={user ? <Navigate replace to="/" /> : <SignUpPage /> } />
               <Route path="welcome" element={user  ? <WelcomePage /> : <Navigate replace to="/" />} />
               <Route path="feed" element={user ? <FeedPage /> : <Navigate replace to="/" />} />
