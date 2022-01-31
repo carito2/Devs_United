@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { AppContext } from "../contexts/AppContext";
 import { firestore } from "../firebase/firebase";
+import Loading from "../components/Loading";
 import BoxColors from "../components/BoxColors"
 import HeaderWelcome from "../components/HeaderWelcome";
 import FooterWelcome from "../components/FooterWelcome";
@@ -12,7 +13,7 @@ function WelcomePage() {
         user,
         userProfile,
         setUserProfile,
-        Loading
+        loading
     } = useContext(AppContext);
 
     const [userColor, setUserColor] = useState({});
@@ -28,7 +29,7 @@ function WelcomePage() {
     const handleColorChange = (color) => {
         setUserColor(color.hex);
     }
-
+    
     const handleButton = (e) => {
         e.preventDefault();
         if(userName && userColor) {
@@ -66,7 +67,10 @@ function WelcomePage() {
                     uid: user.uid
                 }
                 firestore.collection("usersProfile").add(newUserProfile);
-                setUserProfile(newUserProfile);
+                setUserProfile({
+                    ...newUserProfile,
+                    verifiedUserProfile: true
+                });
                 navigate("/feed");
             }
         }
@@ -75,7 +79,7 @@ function WelcomePage() {
     return (
         <section className="welcomePage">
             <HeaderWelcome />
-            {Loading 
+            {loading 
                 ? (<Loading />)
                 :
                     <main className="containerWelcome">
