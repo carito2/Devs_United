@@ -18,7 +18,6 @@ export const AppProvider = ({children}) => {
     const [userProfile, setUserProfile] = useState({});
     const [usersProfilesList, setUsersProfilesList] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [loadingAuth, setLoadingAuth] = useState(true);
 
     //Se realiza llamada a firebase para traernos data y autenticación.
     useEffect(() => {
@@ -103,7 +102,6 @@ export const AppProvider = ({children}) => {
             userProfile,
             usersProfilesList,
             loading,
-            loadingAuth,
             setTweet, 
             setTweets, 
             setUser,
